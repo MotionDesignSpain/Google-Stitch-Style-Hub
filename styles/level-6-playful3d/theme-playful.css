@@ -1,0 +1,602 @@
+/* =========================================================================
+   🎮 GOOGLE STITCH STYLES : PLAYFUL 3D (DUOLINGO/DISCORD STYLE) - LEVEL 6
+      =========================================================================
+   ÍNDICE MAESTRO DE ARQUITECTURA VISUAL (AI PARSER)
+   -------------------------------------------------------------------------
+   Este archivo establece las bases del diseño Cero-JS.
+   
+   0. Variables Globales (:root)
+   1. Bases Estructurales (.stitch-container, .stitch-section-title...)
+   2. Tipografía Semántica (.stitch-h1, .stitch-body...)
+   3. Botones y Acciones (.stitch-btn, .stitch-btn-primary...)
+   4. Formularios y Controles (.stitch-input, .stitch-toggle, .stitch-range)
+   5. Feedback Visual (.stitch-badge, .stitch-avatar, .flex-row)
+   6. Progress & Listas (.stitch-progress-wrapper, .stitch-list)
+   7. Estructuras de Datos
+      > Tarjetas         (.stitch-card)
+      > Tablas           (.stitch-table-wrapper, .stitch-table)
+      > Pestañas/Tabs    (.stitch-tabs)
+      > Métricas         (.stitch-metric-card, .stitch-metric-value)
+      > Modales          (.stitch-modal-overlay, .stitch-modal)
+   8. Componentes Avanzados Interactivos CSS-Only
+      > Skeleton Loaders (.stitch-skeleton)
+      > Tooltips Nativos ([data-stitch-tooltip])
+      > Sliders (Flechas) (.stitch-slider-wrapper)
+      > Galería Autoflow (.stitch-gallery)
+      > Menú de Pegado   (.stitch-sticky-nav)
+   9. Sistema de Grid Layout (.stitch-grid, .stitch-col-span-*)
+   10. Navegación Avanzada (.stitch-breadcrumb, .stitch-dropdown, .stitch-sidebar-toggle-input)
+   11. Data-Viz (Gráficos) (.stitch-bar-chart, .stitch-donut, .stitch-timeline)
+   12. Feedback Pro (.stitch-toast, .stitch-empty-state, .stitch-steps)
+   13. Formularios Pro (.stitch-input-icon-wrapper, .stitch-chips-input, .stitch-dropzone)
+========================================================================= */
+
+:root {
+    /* Paleta Amigable (Soft Pastels pero Saturados) */
+    --stitch-color-text: #374151; /* Gris oscuro apastelado, no negro absoluto */
+    --stitch-color-text-muted: #9ca3af;
+    
+    --stitch-color-bg: #f9fafb; /* Fondo gris súper claro */
+    --stitch-color-surface: #ffffff; 
+    
+    /* Variables de Acción (Botones "Gomosos") */
+    --stitch-color-primary: #58cc02; /* Duolingo Green */
+    --stitch-color-primary-shadow: #58a700; 
+    
+    --stitch-color-secondary: #1cb0f6; /* Azul cielo */
+    --stitch-color-secondary-shadow: #1899d6;
+    
+    --stitch-color-danger: #ff4b4b; /* Rojo caramelo */
+    --stitch-color-danger-shadow: #ea2b2b;
+    
+    --stitch-color-neutral: #e5e5e5;
+    --stitch-color-neutral-shadow: #cccccc;
+    
+    /* Geometría de Juguete */
+    --stitch-border-width: 2px;
+    --stitch-color-border: #e5e7eb;
+    --stitch-border-thick: 6px; /* La magia del 3D */
+    
+    --stitch-radius-sm: 12px;
+    --stitch-radius-md: 16px; /* Radios masivos */
+    --stitch-radius-lg: 24px;
+    --stitch-radius-round: 999px; /* Botones pastilla */
+    
+    --stitch-space-sm: 12px;
+    --stitch-space-md: 20px;
+    --stitch-space-lg: 32px;
+}
+
+/* Base Components Elevados (Tipo panel físico) */
+.stitch-container { 
+    padding: var(--stitch-space-lg); 
+    background-color: var(--stitch-color-surface); 
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    border-radius: var(--stitch-radius-lg); 
+    border-bottom-width: var(--stitch-border-thick);
+    color: var(--stitch-color-text);
+    scroll-margin-top: 40px; 
+    transition: transform 0.1s;
+}
+
+.stitch-section-title { display: block; font-size: 1.3rem; font-weight: 800; margin: 0 0 var(--stitch-space-md) 0; padding-bottom: 20px; border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); color: var(--stitch-color-text); letter-spacing: -0.5px;}
+
+.stitch-h1 { font-size: 2.2rem; font-weight: 800; margin: 0 0 16px 0; letter-spacing: -1px; color: var(--stitch-color-text); }
+.stitch-h2 { font-size: 1.6rem; font-weight: 700; margin: 0 0 12px 0; letter-spacing: -0.5px;}
+.stitch-body { font-size: 1.05rem; line-height: 1.6; color: var(--stitch-color-text); margin: 0 0 16px 0; font-weight: 500;}
+.stitch-muted { color: var(--stitch-color-text-muted); font-size: 0.95rem; display: block; font-weight: 600;}
+
+/* Botones Física Click (La magia de Apretar) */
+.stitch-btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+.stitch-btn { 
+    padding: 14px 24px; 
+    font-size: 1rem; 
+    font-weight: 800; 
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: var(--stitch-radius-round); /* Botón tipo cápsula/pastilla */
+    cursor: pointer; 
+    font-family: inherit; 
+    border: none;
+    transition: all 0.1s cubic-bezier(0, 0, 0.4, 1);
+    background-color: var(--stitch-color-surface);
+    color: var(--stitch-color-text);
+}
+
+/* Estado de apretado Global */
+.stitch-btn:active {
+    transform: translateY(4px);
+    border-bottom-width: 0px !important;
+    margin-bottom: 4px; /* Compensa la pérdida de altura visual */
+    filter: brightness(0.9);
+}
+
+/* Colores de Botones y su Borde Inferior (3D) */
+.stitch-btn-primary { 
+    background-color: var(--stitch-color-primary); 
+    color: #ffffff; 
+    border-bottom: 4px solid var(--stitch-color-primary-shadow);
+}
+.stitch-btn-secondary { 
+    background-color: var(--stitch-color-secondary); 
+    color: #ffffff; 
+    border-bottom: 4px solid var(--stitch-color-secondary-shadow);
+}
+.stitch-btn-outline { 
+    background-color: #ffffff; 
+    color: var(--stitch-color-secondary); 
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    border-bottom: 4px solid var(--stitch-color-border);
+}
+.stitch-btn-outline:hover { background-color: #f9fafb; border-color: var(--stitch-color-secondary); border-bottom-color: var(--stitch-color-secondary-shadow);}
+
+/* Formularios "Chunky" */
+.stitch-form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--stitch-space-lg); max-width: 400px; }
+.stitch-label { font-size: 1rem; font-weight: 700; color: var(--stitch-color-text); margin-bottom: 4px; display:inline-block;}
+.stitch-input, .stitch-select { 
+    padding: 14px 20px; 
+    font-size: 1.05rem; 
+    font-weight: 600;
+    border: var(--stitch-border-width) solid var(--stitch-color-border); 
+    border-radius: var(--stitch-radius-md); 
+    font-family: inherit; 
+    transition: all 0.2s; 
+    background-color: #f3f4f6; 
+    color: var(--stitch-color-text); 
+    box-shadow: inset 0px 2px 4px rgba(0,0,0,0.05); /* Leve sombra interna para hundirlo */
+}
+.stitch-input::placeholder { color: #9ca3af; }
+.stitch-input:focus, .stitch-select:focus { outline: none; border-color: var(--stitch-color-secondary); background-color: #ffffff; box-shadow: none;}
+
+/* Checkboxes como botones gordos */
+.stitch-control-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 1.05rem; color: var(--stitch-color-text); font-weight: 600;}
+.stitch-control-row input[type="checkbox"], .stitch-control-row input[type="radio"] { 
+    appearance: none; -webkit-appearance: none;
+    width: 28px; height: 28px; 
+    border: 2px solid var(--stitch-color-border);
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.1s;
+    display: flex; justify-content: center; align-items: center;
+}
+.stitch-control-row input[type="radio"] { border-radius: 50%; }
+.stitch-control-row input[type="checkbox"]:checked, .stitch-control-row input[type="radio"]:checked {
+    background-color: var(--stitch-color-secondary); border-color: var(--stitch-color-secondary-shadow);
+}
+.stitch-control-row input[type="checkbox"]:checked::after { content: "✓"; color: #fff; font-size: 18px; font-weight: 900;}
+.stitch-control-row input[type="radio"]:checked::after { content: ""; width: 12px; height: 12px; background: #fff; border-radius: 50%; }
+
+/* Badges de gominola */
+.flex-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.stitch-badge { 
+    display: inline-flex; align-items: center; padding: 6px 14px; 
+    font-size: 0.8rem; font-weight: 800; border-radius: var(--stitch-radius-round); 
+    border: var(--stitch-border-width) solid transparent;
+    text-transform: uppercase;
+}
+.stitch-badge-neutral { background-color: var(--stitch-color-border); color: var(--stitch-color-text); }
+.stitch-badge-primary { background-color: var(--stitch-color-secondary); color: #fff; }
+.stitch-badge-success { background-color: var(--stitch-color-primary); color: #fff; }
+.stitch-badge-danger { background-color: var(--stitch-color-danger); color: #fff; }
+
+/* ==========================================================
+   COMPONENTES MASIVOS: PLAYFUL 3D (NIVEL 6)
+   ========================================================== */
+
+/* Tarjetas (Cajas Físicas) */
+.stitch-card { 
+    background-color: var(--stitch-color-surface); 
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    border-bottom-width: var(--stitch-border-thick);
+    border-radius: var(--stitch-radius-lg); 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    transition: transform 0.1s ease;
+}
+/* Física de Flotación suave, no de clic brutal */
+.stitch-card:hover { transform: translateY(-2px); border-bottom-width: 8px; margin-bottom: -2px;} 
+.stitch-card-header { padding: 24px; font-weight: 800; font-size: 1.15rem; color: var(--stitch-color-text); border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); background-color: var(--stitch-color-bg);}
+.stitch-card-body { padding: 24px; flex: 1; color: var(--stitch-color-text);}
+.stitch-card-footer { padding: 24px; display: flex; justify-content: flex-end; gap: 16px; border-top: var(--stitch-border-width) solid var(--stitch-color-border); background-color: var(--stitch-color-surface);}
+
+/* Tablas ("Leaderboard") */
+.stitch-table-wrapper { 
+    width: 100%; overflow-x: auto; 
+    border-radius: var(--stitch-radius-lg); 
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    border-bottom-width: var(--stitch-border-thick);
+    background: var(--stitch-color-surface);
+}
+.stitch-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 1rem; color: var(--stitch-color-text); }
+.stitch-table th, .stitch-table td { padding: 18px var(--stitch-space-lg); border-bottom: var(--stitch-border-width) solid var(--stitch-color-border);}
+.stitch-table th { font-weight: 800; color: var(--stitch-color-text-muted); text-transform: uppercase; font-size: 0.85rem;}
+.stitch-table tbody tr { transition: background 0.1s;}
+.stitch-table tbody tr:hover { background: #f0fdf4; cursor:pointer;}
+.stitch-table tbody tr:last-child td { border-bottom: none; }
+
+/* Navegación (Tabs) Gruesos */
+.stitch-tabs { display: flex; border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); gap: 16px; margin-bottom: 32px; background: transparent; }
+.stitch-tab { padding: 14px 24px; cursor: pointer; font-weight: 800; font-size: 1.05rem; color: var(--stitch-color-text-muted); border-bottom: 4px solid transparent; transition: all 0.2s; margin-bottom: -2px; border-radius: var(--stitch-radius-md) var(--stitch-radius-md) 0 0;}
+.stitch-tab:hover { color: var(--stitch-color-secondary); background: #f0f9ff;}
+.stitch-tab-active { color: var(--stitch-color-secondary); border-bottom-color: var(--stitch-color-secondary); }
+
+/* Dashboard Metrics */
+.stitch-metric-card { 
+    padding: 24px; 
+    border-radius: var(--stitch-radius-lg); 
+    background-color: var(--stitch-color-surface);
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    border-bottom: var(--stitch-border-thick) solid var(--stitch-color-border);
+}
+.stitch-metric-label { font-size: 0.95rem; font-weight: 700; color: var(--stitch-color-text-muted); margin-bottom: 12px; display: block; text-transform: uppercase; letter-spacing: 0.5px;}
+.stitch-metric-value { font-size: 2.6rem; font-weight: 900; color: var(--stitch-color-text); display: flex; align-items: center; gap: 16px; letter-spacing: -1px;}
+
+/* Modales ("Rachas") */
+.stitch-modal-overlay { position: relative; background-color: rgba(31, 41, 55, 0.7); padding: 40px; display: flex; justify-content: center; align-items: center; border-radius: var(--stitch-radius-lg); backdrop-filter: blur(4px);}
+.stitch-modal { background-color: var(--stitch-color-surface); border: var(--stitch-border-width) solid var(--stitch-color-border); border-bottom: 8px solid var(--stitch-color-border); border-radius: 32px; width: 100%; max-width: 450px; overflow: hidden; }
+
+/* ==========================================================
+   🧩 COMPONENTES AVANZADOS CSS-ONLY
+   ========================================================== */
+
+/* 1. Progress Bar (Nativa) */
+.stitch-progress {
+    width: 100%;
+    height: 8px;
+    background-color: var(--stitch-color-border);
+    border-radius: var(--stitch-radius-round);
+    overflow: hidden;
+    position: relative;
+}
+
+.stitch-progress-bar {
+    height: 100%;
+    background-color: var(--stitch-color-primary);
+    border-radius: var(--stitch-radius-round);
+    transition: width 0.3s ease;
+}
+
+/* 2. Skeleton Loader (Efecto Shimmer) */
+@keyframes stitch-shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.stitch-skeleton {
+    background: linear-gradient(90deg, var(--stitch-color-bg-alt) 25%, var(--stitch-color-border) 50%, var(--stitch-color-bg-alt) 75%);
+    background-size: 1000px 100%;
+    animation: stitch-shimmer 2s infinite linear;
+    border-radius: var(--stitch-radius-sm);
+    color: transparent !important;
+    min-height: 1rem;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 3. Tooltips Hover Nativos */
+[data-stitch-tooltip] {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted var(--stitch-color-text-muted);
+}
+
+[data-stitch-tooltip]:hover::before {
+    content: attr(data-stitch-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background-color: var(--stitch-color-text);
+    color: var(--stitch-color-bg);
+    padding: 6px 12px;
+    border-radius: var(--stitch-radius-sm);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 1;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-stitch-tooltip]:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--stitch-color-text) transparent transparent transparent;
+    z-index: 10;
+}
+
+/* 4. Carrusel Puro (Scroll Snap) */
+.stitch-carousel {
+    display: flex;
+    gap: var(--stitch-space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.stitch-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.stitch-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stitch-carousel::-webkit-scrollbar-thumb {
+    background: var(--stitch-color-border);
+    border-radius: var(--stitch-radius-round);
+}
+
+.stitch-carousel-item {
+    scroll-snap-align: start;
+    flex: 0 0 calc(85% - var(--stitch-space-md));
+    min-width: 260px;
+    position: relative;
+}
+
+/* 5. Carrusel de Anclajes (Flechas CSS) */
+.stitch-slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stitch-slider-slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: var(--stitch-radius-md);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.stitch-slider-slides::-webkit-scrollbar {
+    display: none;
+}
+
+.stitch-slide {
+    scroll-snap-align: center;
+    flex: 0 0 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--stitch-color-bg-alt);
+    height: 200px;
+    font-weight: 500;
+}
+
+.stitch-slider-arrow {
+    background-color: var(--stitch-color-bg);
+    border: 1px solid var(--stitch-color-border);
+    color: var(--stitch-color-text);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.stitch-slider-arrow:hover {
+    background-color: var(--stitch-color-bg-alt);
+}
+
+/* 6. Galería Fotográfica (CSS Grid) */
+.stitch-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--stitch-space-md);
+}
+
+.stitch-gallery-img {
+    width: 100%;
+    height: 140px;
+    border-radius: var(--stitch-radius-md);
+    background-color: var(--stitch-color-border);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.stitch-gallery-img:hover {
+    transform: scale(1.03);
+}
+
+/* 7. Menú Flotante Sticky */
+.stitch-sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--stitch-color-border);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-radius: var(--stitch-radius-md);
+}
+
+.stitch-sticky-links {
+    display: flex;
+    gap: 16px;
+}
+
+.stitch-sticky-links a {
+    color: var(--stitch-color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+.stitch-sticky-links a:hover {
+    color: var(--stitch-color-primary);
+}
+
+/* ==========================================================
+   📐 SISTEMA DE GRID (LAYOUT RESPONSIVE PARA IA)
+   ========================================================== */
+.stitch-grid {
+    display: grid;
+    gap: var(--stitch-space-lg);
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.stitch-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (min-width: 768px) {
+    .stitch-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stitch-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stitch-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stitch-grid-1-2 {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .stitch-grid-2-1 {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    /* Utilidades de Envergadura (Spanning) */
+    .stitch-col-span-2 {
+        grid-column: span 2;
+    }
+
+    .stitch-col-span-3 {
+        grid-column: span 3;
+    }
+
+    .stitch-col-span-full {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ==========================================================
+   🚀 COMPONENTES PRO: NAVEGACIÓN AVANZADA
+   ========================================================== */
+/* Breadcrumbs */
+.stitch-breadcrumb { display: flex; gap: 8px; font-size: 0.875rem; color: var(--stitch-color-text-muted); list-style: none; padding: 0; margin: 0; align-items: center; flex-wrap: wrap;}
+.stitch-breadcrumb a { color: var(--stitch-color-primary); text-decoration: none; font-weight: 500; }
+.stitch-breadcrumb a:hover { text-decoration: underline; }
+.stitch-breadcrumb li + li::before { content: '/'; margin-right: 8px; color: var(--stitch-color-border); font-weight: bold;}
+
+/* Mega Menu / Dropdown */
+.stitch-dropdown { position: relative; display: inline-block; }
+.stitch-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--stitch-color-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: var(--stitch-radius-md); padding: var(--stitch-space-sm); min-width: 200px; z-index: 50; border: 1px solid var(--stitch-color-border); flex-direction: column; gap: 4px; margin-top: 4px;}
+.stitch-dropdown:hover .stitch-dropdown-menu, .stitch-dropdown:focus-within .stitch-dropdown-menu { display: flex; }
+.stitch-dropdown-item { padding: 8px 12px; text-decoration: none; color: var(--stitch-color-text); font-size: 0.875rem; border-radius: var(--stitch-radius-sm); transition: background 0.2s; }
+.stitch-dropdown-item:hover { background: var(--stitch-color-bg-alt); color: var(--stitch-color-primary); }
+
+/* Sidebar Colapsable (CSS-Only Checkbox Hack) */
+.stitch-sidebar-toggle-input { display: none; }
+.stitch-sidebar-drawer { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: var(--stitch-color-bg); box-shadow: 4px 0 24px rgba(0,0,0,0.15); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; padding: var(--stitch-space-lg); padding-top: 64px; overflow-y: auto;}
+.stitch-sidebar-toggle-input:checked ~ .stitch-sidebar-drawer { left: 0; }
+.stitch-sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(32,33,36,0.6); backdrop-filter: blur(2px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.stitch-sidebar-toggle-input:checked ~ .stitch-sidebar-overlay { opacity: 1; pointer-events: auto; }
+.stitch-drawer-close { position: absolute; top: 16px; right: 16px; cursor: pointer; padding: 8px; font-weight: bold; border-radius: var(--stitch-radius-sm); color: var(--stitch-color-text-muted); transition: background 0.2s;}
+.stitch-drawer-close:hover { background: var(--stitch-color-bg-alt); color: var(--stitch-color-text);}
+
+/* ==========================================================
+   📊 DATA-VIZ (VISUALIZACIÓN DE DATOS CSS)
+   ========================================================== */
+/* Bar Chart */
+.stitch-bar-chart { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.stitch-bar-row { display: flex; align-items: center; gap: 12px; font-size: 0.875rem; }
+.stitch-bar-label { width: 80px; font-weight: 500; color: var(--stitch-color-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink:0;}
+.stitch-bar-track { flex: 1; height: 24px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-sm); overflow: hidden; border: 1px solid var(--stitch-color-border);}
+.stitch-bar-fill { height: 100%; background: var(--stitch-color-primary); transition: width 0.5s ease-out; display: flex; align-items: center; padding-left: 8px; color: white; font-weight: bold; font-size: 0.75rem;}
+.stitch-bar-value { width: 40px; text-align: right; color: var(--stitch-color-text-muted); font-weight: 600; flex-shrink:0;}
+
+/* Donut Chart */
+.stitch-donut { width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 0 0 1px var(--stitch-color-border);}
+.stitch-donut::before { content: ""; width: 80px; height: 80px; border-radius: 50%; background: var(--stitch-color-bg); position: absolute; box-shadow: 0 0 0 1px var(--stitch-color-border);}
+.stitch-donut-value { position: relative; font-weight: 700; font-size: 1.5rem; color: var(--stitch-color-text); }
+
+/* Timeline */
+.stitch-timeline { border-left: 2px solid var(--stitch-color-border); padding-left: 24px; margin-left: 12px; display: flex; flex-direction: column; gap: 24px; margin-top: 16px;}
+.stitch-timeline-item { position: relative; }
+.stitch-timeline-item::before { content: ""; position: absolute; left: -31px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--stitch-color-primary); border: 2px solid var(--stitch-color-bg); box-shadow: 0 0 0 1px var(--stitch-color-border);}
+.stitch-timeline-date { font-size: 0.75rem; color: var(--stitch-color-text-muted); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
+.stitch-timeline-content { font-size: 0.875rem; background: var(--stitch-color-bg-alt); padding: 16px; border-radius: var(--stitch-radius-md); color: var(--stitch-color-text); border: 1px solid var(--stitch-color-border);}
+
+/* ==========================================================
+   🔔 FEEDBACK PRO Y MICRO-INTERACCIONES
+   ========================================================== */
+/* Toast Notification Simulation */
+.stitch-toast-container { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; pointer-events: none;}
+.stitch-toast { background: var(--stitch-color-text); color: var(--stitch-color-bg); padding: 12px 20px; border-radius: var(--stitch-radius-md); font-size: 0.875rem; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; pointer-events: auto; animation: stitch-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1);}
+@keyframes stitch-slide-up { 0% { opacity: 0; transform: translateY(30px) scale(0.9); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+.stitch-toast-icon { color: var(--stitch-color-bg-alt); font-size: 1.25rem; }
+
+/* Empty States */
+.stitch-empty-state { padding: 48px 24px; text-align: center; border: 2px dashed var(--stitch-color-border); border-radius: var(--stitch-radius-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--stitch-color-bg); margin-bottom: 24px;}
+.stitch-empty-icon { font-size: 3rem; color: var(--stitch-color-border); margin-bottom: 16px; display: block;}
+.stitch-empty-title { font-weight: 600; font-size: 1.25rem; margin-bottom: 8px; color: var(--stitch-color-text); }
+.stitch-empty-body { color: var(--stitch-color-text-muted); font-size: 0.875rem; max-width: 300px; margin-bottom: 24px; line-height: 1.5; margin-left: auto; margin-right: auto;}
+
+/* Step Indicator */
+.stitch-steps { display: flex; align-items: center; justify-content: space-between; width: 100%; position: relative; max-width: 400px; margin: 0 auto 32px auto;}
+.stitch-steps::before { content: ""; position: absolute; top: 16px; left: 16px; right: 16px; height: 2px; background: var(--stitch-color-border); z-index: 0; }
+.stitch-step { width: 32px; height: 32px; border-radius: 50%; background: var(--stitch-color-bg); border: 2px solid var(--stitch-color-border); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.875rem; position: relative; z-index: 1; color: var(--stitch-color-text-muted); transition: all 0.3s; }
+.stitch-step.active { border-color: var(--stitch-color-primary); background: var(--stitch-color-primary); color: white; }
+.stitch-step.completed { border-color: var(--stitch-color-primary); background: var(--stitch-color-bg); color: var(--stitch-color-primary); }
+.stitch-step-label { position: absolute; top: 40px; font-size: 0.75rem; color: var(--stitch-color-text-muted); white-space: nowrap; font-weight: 500;}
+
+/* ==========================================================
+   📝 FORMULARIOS PRO
+   ========================================================== */
+/* Input con Icono */
+.stitch-input-icon-wrapper { position: relative; display: flex; align-items: center; width: 100%; max-width: 400px; margin-bottom: var(--stitch-space-md);}
+.stitch-input-icon-wrapper .stitch-icon { position: absolute; left: 12px; font-size: 1.25rem; pointer-events: none; opacity: 0.5;}
+.stitch-input-icon-wrapper .stitch-input { padding-left: 40px; width: 100%; }
+
+/* Multi-select Chips */
+.stitch-chips-input { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; border: 1px solid var(--stitch-color-border); border-radius: var(--stitch-radius-sm); background: var(--stitch-color-bg); min-height: 48px; width: 100%; max-width: 400px; margin-bottom: var(--stitch-space-md);}
+.stitch-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--stitch-color-bg-alt); padding: 4px 12px; border-radius: 16px; font-size: 0.8125rem; font-weight: 500; color: var(--stitch-color-text); border: 1px solid var(--stitch-color-border); }
+.stitch-chip-close { cursor: pointer; color: var(--stitch-color-text-muted); font-weight: bold; font-size: 1rem; line-height: 1; margin-left: 2px;}
+.stitch-chip-close:hover { color: var(--stitch-color-danger); }
+.stitch-chips-input input { border: none; outline: none; flex: 1; min-width: 80px; background: transparent; font-size: 0.875rem; color: var(--stitch-color-text); padding: 4px; }
+
+/* File Dropzone */
+.stitch-dropzone { border: 2px dashed var(--stitch-color-border); border-radius: var(--stitch-radius-md); padding: 40px 24px; text-align: center; background: var(--stitch-color-bg); cursor: pointer; transition: all 0.2s; width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; margin-bottom: var(--stitch-space-md);}
+.stitch-dropzone:hover { border-color: var(--stitch-color-primary); background: #f8faff; }
+.stitch-dropzone-icon { font-size: 3rem; margin-bottom: 12px; color: var(--stitch-color-primary); opacity: 0.8; }
+.stitch-dropzone-title { font-size: 1rem; font-weight: 600; color: var(--stitch-color-text); margin-bottom: 4px; }
+.stitch-dropzone-desc { font-size: 0.875rem; color: var(--stitch-color-text-muted); }

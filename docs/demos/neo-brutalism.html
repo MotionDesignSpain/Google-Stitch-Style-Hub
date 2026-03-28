@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Completa: Neo-Brutalism | Google Stitch Styles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/level-4-neobrutalism/theme-brutal.css?v=7">
+    <style>
+        /* ESTILOS INTERNOS DE LA DEMO NEO-BRUTALISTA */
+        body { 
+            margin: 0; font-family: 'Roboto', sans-serif; color: #000; scroll-behavior: smooth; display: flex; 
+            background-color: #f4f4f0; 
+            background-image: radial-gradient(#000 1px, transparent 0); 
+            background-size: 24px 24px; 
+            min-height: 100vh;
+        }
+        :root { --stitch-sidebar-width: 260px; }
+        .demo-sidebar { 
+            position: fixed; top: 0; left: 0; width: var(--stitch-sidebar-width); height: 100vh; 
+            background: #a855f7; border-right: 4px solid #000; padding: var(--stitch-space-lg); box-sizing: border-box; overflow-y: auto; z-index: 100;
+        }
+        .demo-sidebar h3 { margin-top: 0; font-size: 1.1rem; color: #fff; margin-bottom: 24px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; -webkit-text-stroke: 1px #000; text-shadow: 3px 3px 0px #000;}
+        .demo-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        .demo-nav a { text-decoration: none; color: #000; font-weight: 800; font-size: 0.95rem; padding: 10px 14px; border: 3px solid transparent; transition: all 0.1s; display: block; border-radius: 4px; text-transform: uppercase; }
+        .demo-nav a:hover, .demo-nav a:active { background: #fde047; border: 3px solid #000; transform: translate(-3px, -3px); box-shadow: 5px 5px 0px #000; }
+        .demo-main { margin-left: var(--stitch-sidebar-width); padding: 50px var(--stitch-space-lg); width: calc(100% - var(--stitch-sidebar-width)); display: flex; justify-content: center; box-sizing: border-box; }
+        .demo-wrapper { max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 60px; }
+        .demo-header h1 { font-size: 3.5rem; margin: 0 0 16px 0; font-weight: 900; color: #fde047; text-transform: uppercase; letter-spacing: -1px; text-shadow: 6px 6px 0px #000; -webkit-text-stroke: 2px #000;}
+        .demo-header p { color: #000; font-size: 1.15rem; font-weight: 700; margin: 0; line-height: 1.6; background: #fff; border: 3px solid #000; padding: 16px; box-shadow: 6px 6px 0px #06b6d4; display: inline-block; border-radius: 4px;}
+
+        /* WIDGET DE CÓDIGO */
+        .stitch-code-block { margin-top: 24px; background: #fff; border-radius: 4px; overflow: hidden; border: 3px solid #000; box-shadow: 6px 6px 0px #000;}
+        .stitch-code-block summary { padding: 14px 16px; background: #fde047; color: #000; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; cursor: pointer; border-bottom: 3px solid #000; outline: none; display: flex; align-items: center; gap: 8px; list-style: none; transition: background 0.1s;}
+        .stitch-code-block summary::-webkit-details-marker { display: none; }
+        .stitch-code-block summary:before { content: "►"; font-size: 0.8rem; color: #000; transition: transform 0.1s; }
+        .stitch-code-block[open] summary:before { transform: rotate(90deg); }
+        .stitch-code-block summary:hover { background: #06b6d4; color: #000; }
+        .stitch-code-content { position: relative; padding: 16px; background: #000; }
+        .stitch-btn-copy { position: absolute; top: 12px; right: 12px; background: #fff; border: 3px solid #000; color: #000; padding: 8px 14px; border-radius: 4px; font-size: 0.8rem; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: all 0.1s; box-shadow: 4px 4px 0px #a855f7;}
+        .stitch-btn-copy:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #a855f7; }
+        .stitch-btn-copy:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #a855f7; }
+        .stitch-code-content pre { margin: 0; overflow-x: auto; color: #10b981; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; font-weight: 600; line-height: 1.5; padding-right: 80px;}
+
+        .stitch-onboarding-card { background: #06b6d4; border: 4px solid #000; border-radius: 8px; padding: 32px; margin-bottom: 40px; box-shadow: 10px 10px 0px #000; scroll-margin-top: 40px;}
+        .stitch-onboarding-title { color: #fff; text-shadow: 4px 4px 0px #000; font-size: 2.2rem; font-weight: 900; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: -1px; -webkit-text-stroke: 2px #000;}
+    </style>
+</head>
+<body>
+
+    <aside class="demo-sidebar">
+        <a href="../index.html" style="display:flex; align-items:center; gap:8px; text-decoration:none; color:#000; font-size:0.9rem; margin-bottom:24px; font-weight:900; background:#fff; padding: 8px 12px; border:3px solid #000; border-radius:4px; box-shadow: 4px 4px 0px #000; transition:all 0.1s; text-transform:uppercase;" onmouseover="this.style.transform='translate(-2px, -2px)'; this.style.boxShadow='6px 6px 0px #000'" onmouseout="this.style.transform='translate(0, 0)'; this.style.boxShadow='4px 4px 0px #000'">
+            &larr; Volver
+        </a>
+        <h3>Neo-Brutalism</h3>
+        <ul class="demo-nav">
+            <li><a href="#setup" style="background: #fff; border: 3px solid #000; box-shadow: 4px 4px 0px #000;">🚀 Iniciar Setup</a></li>
+            <li><a href="#typography">Titulares Rígidos</a></li>
+            <li><a href="#buttons">Física Hover</a></li>
+            <li><a href="#forms">Forms Agresivos</a></li>
+            <li><a href="#cards">Tarjetas de Alto Contraste</a></li>
+            <li><a href="#tables">Grillas Robustas</a></li>
+            <li><a href="#nav">Tabs Figma</a></li>
+                    <li><a href="#nav-pro">🚀 Navegación Pro</a></li>
+            <li><a href="#data-viz">📊 Data-Viz</a></li>
+            <li><a href="#feedback-pro">🔔 Feedback Pro</a></li>
+            <li><a href="#forms-pro">📝 Formularios Pro</a></li>
+        </ul>
+    </aside>
+
+    <main class="demo-main">
+        <div class="demo-wrapper">
+            
+            <header class="demo-header">
+                <h1>Retro Brutal Engine</h1>
+                <p>El mismo código exacto. Un mundo de diferencia. Cajas retro, colores puros "Figma style" y duras sombras sólidas.</p>
+            </header>
+
+            <!-- SECCIÓN NUEVA: ONBOARDING Y PROMPTS -->
+            <div id="setup" class="stitch-onboarding-card">
+                <h2 class="stitch-onboarding-title">🔥 Motor Brutalista (Instalación)</h2>
+                <p class="stitch-body" style="color: #000; font-weight: 800; font-size: 1.1rem; background: #fff; padding: 12px; border: 3px solid #000; display: inline-block;">Si no temes destacar visualmente, pega este código en los Estilos Globales de tu proyecto.</p>
+                
+                <h3 class="stitch-h3" style="color: #000; margin-top: 24px;">Paso 1: Copiar el Core CSS</h3>
+                <p class="stitch-muted" style="color: #fff; text-shadow: 1px 1px 0px #000;">Reemplaza tu Level 1 u 2 por estas variables agresivas.</p>
+                <details class="stitch-code-block">
+                    <summary>👁️ Mostrar y Copiar 'theme-brutal.css'</summary>
+                    <div class="stitch-code-content">
+                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar CSS', 2000);">Copiar CSS</button>
+<pre><code>/* =========================================================================
+   🟨 GOOGLE STITCH STYLES : NEO-BRUTALISM (LEVEL 4)
+      =========================================================================
+   ÍNDICE MAESTRO DE ARQUITECTURA VISUAL (AI PARSER)
+   -------------------------------------------------------------------------
+   Este archivo establece las bases del diseño Cero-JS.
+   
+   0. Variables Globales (:root)
+   1. Bases Estructurales (.stitch-container, .stitch-section-title...)
+   2. Tipografía Semántica (.stitch-h1, .stitch-body...)
+   3. Botones y Acciones (.stitch-btn, .stitch-btn-primary...)
+   4. Formularios y Controles (.stitch-input, .stitch-toggle, .stitch-range)
+   5. Feedback Visual (.stitch-badge, .stitch-avatar, .flex-row)
+   6. Progress & Listas (.stitch-progress-wrapper, .stitch-list)
+   7. Estructuras de Datos
+      > Tarjetas         (.stitch-card)
+      > Tablas           (.stitch-table-wrapper, .stitch-table)
+      > Pestañas/Tabs    (.stitch-tabs)
+      > Métricas         (.stitch-metric-card, .stitch-metric-value)
+      > Modales          (.stitch-modal-overlay, .stitch-modal)
+   8. Componentes Avanzados Interactivos CSS-Only
+      > Skeleton Loaders (.stitch-skeleton)
+      > Tooltips Nativos ([data-stitch-tooltip])
+      > Sliders (Flechas) (.stitch-slider-wrapper)
+      > Galería Autoflow (.stitch-gallery)
+      > Menú de Pegado   (.stitch-sticky-nav)
+   9. Sistema de Grid Layout (.stitch-grid, .stitch-col-span-*)
+   10. Navegación Avanzada (.stitch-breadcrumb, .stitch-dropdown, .stitch-sidebar-toggle-input)
+   11. Data-Viz (Gráficos) (.stitch-bar-chart, .stitch-donut, .stitch-timeline)
+   12. Feedback Pro (.stitch-toast, .stitch-empty-state, .stitch-steps)
+   13. Formularios Pro (.stitch-input-icon-wrapper, .stitch-chips-input, .stitch-dropzone)
+========================================================================= */
+
+:root {
+    /* Paleta Neo-Retro */
+    --stitch-color-text: #000000;
+    --stitch-color-text-muted: #3f3f46;
+    --stitch-color-bg: #f4f4f0; /* Off-white cálido (estilo papel) */
+    --stitch-color-surface: #ffffff;
+    --stitch-color-border: #000000;
+    
+    /* Colores Primarios Saturados (Figma/Gumroad style) */
+    --stitch-color-primary: #a855f7; /* Púrpura brillante */
+    --stitch-color-primary-hover: #9333ea;
+    --stitch-color-secondary: #fde047; /* Amarillo póster */
+    --stitch-color-accent: #06b6d4; /* Cian/Celeste */
+    --stitch-color-danger: #ef4444;
+    --stitch-color-success: #10b981;
+    
+    /* Variables Brutalistas */
+    --stitch-border-width: 3px;
+    --stitch-shadow-offset: 5px;
+    --stitch-shadow-color: #000000;
+    --stitch-shadow-solid: var(--stitch-shadow-offset) var(--stitch-shadow-offset) 0px var(--stitch-shadow-color);
+    
+    --stitch-radius-sm: 0px; /* Bordes cuadrados o muy rígidos */
+    --stitch-radius-md: 4px; /* Un ligerísimo redondeo a veces funciona mejor */
+    --stitch-space-sm: 8px;
+    --stitch-space-md: 16px;
+    --stitch-space-lg: 24px;
+}
+
+/* Base Components */
+.stitch-container { 
+    padding: var(--stitch-space-lg); 
+    background-color: var(--stitch-color-surface); 
+    border: var(--stitch-border-width) solid var(--stitch-color-border); 
+    border-radius: var(--stitch-radius-md); 
+    box-shadow: var(--stitch-shadow-solid);
+    scroll-margin-top: 40px; 
+}
+
+.stitch-section-title { font-size: 1.4rem; font-weight: 800; margin: 0 0 var(--stitch-space-md) 0; padding-bottom: var(--stitch-space-sm); border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); letter-spacing: -0.5px; text-transform: uppercase; }
+
+.stitch-h1 { font-size: 2.5rem; font-weight: 900; margin: 0 0 16px 0; letter-spacing: -1px; text-transform: uppercase; -webkit-text-stroke: 1px #000; }
+.stitch-h2 { font-size: 1.5rem; font-weight: 800; margin: 0 0 12px 0; }
+.stitch-body { font-size: 1.05rem; line-height: 1.6; font-weight: 500; color: var(--stitch-color-text); margin: 0 0 16px 0; }
+.stitch-muted { color: var(--stitch-color-text-muted); font-size: 0.9rem; display: block; font-weight: 600; }
+
+/* Botones Física Click */
+.stitch-btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+.stitch-btn { 
+    padding: 12px 24px; 
+    font-size: 0.9rem; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: var(--stitch-radius-md); 
+    cursor: pointer; 
+    font-family: inherit; 
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    box-shadow: var(--stitch-shadow-solid);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.stitch-btn:hover { 
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0px var(--stitch-color-border);
+}
+.stitch-btn:active {
+    transform: translate(var(--stitch-shadow-offset), var(--stitch-shadow-offset));
+    box-shadow: 0px 0px 0px var(--stitch-color-border);
+}
+
+.stitch-btn-primary { background-color: var(--stitch-color-primary); color: #ffffff; }
+.stitch-btn-secondary { background-color: var(--stitch-color-secondary); color: #000; }
+.stitch-btn-outline { background-color: #fff; color: #000; }
+
+/* Formulario Robusto */
+.stitch-form-group { display: flex; flex-direction: column; gap: var(--stitch-space-sm); margin-bottom: var(--stitch-space-md); max-width: 400px; }
+.stitch-label { font-size: 0.95rem; font-weight: 800; color: #000; margin-bottom: 4px; display:inline-block;}
+.stitch-input, .stitch-select { 
+    padding: 12px 14px; 
+    font-size: 1rem; 
+    font-weight: 500;
+    border: var(--stitch-border-width) solid var(--stitch-color-border); 
+    border-radius: var(--stitch-radius-md); 
+    font-family: inherit; 
+    transition: transform 0.1s, box-shadow 0.1s;
+    background-color: var(--stitch-color-surface); 
+    color: var(--stitch-color-text); 
+    box-shadow: 3px 3px 0px var(--stitch-color-border);
+}
+.stitch-input:focus, .stitch-select:focus { 
+    outline: none; 
+    background-color: var(--stitch-color-secondary);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--stitch-color-border);
+}
+
+.stitch-control-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600; color: #000;}
+.stitch-control-row input[type="checkbox"], .stitch-control-row input[type="radio"] { 
+    appearance: none; -webkit-appearance: none;
+    width: 24px; height: 24px; 
+    border: 2px solid #000;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+    transition: all 0.1s;
+}
+.stitch-control-row input[type="radio"] { border-radius: 50%; }
+.stitch-control-row input[type="checkbox"]:checked, .stitch-control-row input[type="radio"]:checked {
+    background-color: var(--stitch-color-primary);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+/* Badges Póster */
+.flex-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.stitch-badge { 
+    display: inline-flex; align-items: center; padding: 6px 12px; 
+    font-size: 0.8rem; font-weight: 800; border-radius: 20px; text-transform: uppercase; 
+    letter-spacing: 1px; border: 2px solid #000; color: #000;
+    box-shadow: 2px 2px 0px #000; 
+}
+.stitch-badge-neutral { background-color: #fff; }
+.stitch-badge-primary { background-color: var(--stitch-color-accent); }
+.stitch-badge-success { background-color: var(--stitch-color-success); }
+.stitch-badge-danger { background-color: var(--stitch-color-danger); }
+
+/* ==========================================================
+   COMPONENTES MASIVOS: NEO-BRUTALISM (NIVEL 4)
+   ========================================================== */
+
+/* Tarjetas */
+.stitch-card { 
+    border: var(--stitch-border-width) solid var(--stitch-color-border); 
+    border-radius: var(--stitch-radius-md); 
+    background-color: var(--stitch-color-surface); 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    box-shadow: var(--stitch-shadow-solid);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.stitch-card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px #000; }
+.stitch-card-header { padding: var(--stitch-space-md); border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); font-weight: 800; background-color: var(--stitch-color-secondary); font-size: 1.1rem; text-transform: uppercase; }
+.stitch-card-body { padding: var(--stitch-space-md); flex: 1; }
+.stitch-card-footer { padding: var(--stitch-space-md); border-top: var(--stitch-border-width) solid var(--stitch-color-border); background-color: var(--stitch-color-surface); display: flex; justify-content: flex-end; gap: 12px; }
+
+/* Tablas */
+.stitch-table-wrapper { width: 100%; overflow-x: auto; border: var(--stitch-border-width) solid var(--stitch-color-border); border-radius: var(--stitch-radius-md); box-shadow: var(--stitch-shadow-solid); background: #fff;}
+.stitch-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; font-weight: 500; }
+.stitch-table th, .stitch-table td { padding: 14px var(--stitch-space-md); border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); border-right: var(--stitch-border-width) solid var(--stitch-color-border); }
+.stitch-table th:last-child, .stitch-table td:last-child { border-right: none; }
+.stitch-table th { background-color: var(--stitch-color-accent); font-weight: 800; color: #000; text-transform: uppercase; border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); }
+.stitch-table tbody tr:hover { background-color: var(--stitch-color-secondary); cursor: pointer; }
+.stitch-table tbody tr:last-child td { border-bottom: none; }
+
+/* Navegación (Tabs) */
+.stitch-tabs { display: flex; border-bottom: var(--stitch-border-width) solid var(--stitch-color-border); gap: 12px; margin-bottom: var(--stitch-space-md); }
+.stitch-tab { padding: 12px 16px; cursor: pointer; font-weight: 800; font-size: 0.9rem; color: #000; border: var(--stitch-border-width) solid var(--stitch-color-border); border-bottom: none; border-radius: 8px 8px 0 0;  background: #fff; text-transform: uppercase; transition: transform 0.1s;}
+.stitch-tab:hover { background: var(--stitch-color-secondary); transform: translateY(-3px); box-shadow: 3px 3px 0px #000; }
+.stitch-tab-active { background-color: var(--stitch-color-primary); color: #fff; padding-bottom: 20px; margin-bottom: -10px; z-index: 10; transform: translateY(0) !important; box-shadow: none !important;}
+
+/* Dashboard Metrics */
+.stitch-metric-card { 
+    padding: var(--stitch-space-md); 
+    border: var(--stitch-border-width) solid var(--stitch-color-border);
+    border-radius: var(--stitch-radius-md); 
+    background-color: var(--stitch-color-surface);
+    box-shadow: var(--stitch-shadow-solid);
+}
+.stitch-metric-label { font-size: 0.9rem; font-weight: 800; color: #000; margin-bottom: 8px; display: block; text-transform: uppercase;}
+.stitch-metric-value { font-size: 2.2rem; font-weight: 900; color: #000; display: flex; align-items: center; gap: 12px; }
+
+/* Modales */
+.stitch-modal-overlay { position: relative; background-color: rgba(252, 211, 77, 0.9); padding: 40px; display: flex; justify-content: center; align-items: center; border-radius: var(--stitch-radius-md); border: var(--stitch-border-width) solid #000;}
+.stitch-modal { background-color: var(--stitch-color-surface); border: var(--stitch-border-width) solid var(--stitch-color-border); box-shadow: 12px 12px 0px #000; border-radius: var(--stitch-radius-md); width: 100%; max-width: 400px; overflow: hidden; }
+
+/* ==========================================================
+   🧩 COMPONENTES AVANZADOS CSS-ONLY
+   ========================================================== */
+
+/* 1. Progress Bar (Nativa) */
+.stitch-progress {
+    width: 100%;
+    height: 8px;
+    background-color: var(--stitch-color-border);
+    border-radius: var(--stitch-radius-round);
+    overflow: hidden;
+    position: relative;
+}
+
+.stitch-progress-bar {
+    height: 100%;
+    background-color: var(--stitch-color-primary);
+    border-radius: var(--stitch-radius-round);
+    transition: width 0.3s ease;
+}
+
+/* 2. Skeleton Loader (Efecto Shimmer) */
+@keyframes stitch-shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.stitch-skeleton {
+    background: linear-gradient(90deg, var(--stitch-color-bg-alt) 25%, var(--stitch-color-border) 50%, var(--stitch-color-bg-alt) 75%);
+    background-size: 1000px 100%;
+    animation: stitch-shimmer 2s infinite linear;
+    border-radius: var(--stitch-radius-sm);
+    color: transparent !important;
+    min-height: 1rem;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 3. Tooltips Hover Nativos */
+[data-stitch-tooltip] {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted var(--stitch-color-text-muted);
+}
+
+[data-stitch-tooltip]:hover::before {
+    content: attr(data-stitch-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background-color: var(--stitch-color-text);
+    color: var(--stitch-color-bg);
+    padding: 6px 12px;
+    border-radius: var(--stitch-radius-sm);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 1;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-stitch-tooltip]:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--stitch-color-text) transparent transparent transparent;
+    z-index: 10;
+}
+
+/* 4. Carrusel Puro (Scroll Snap) */
+.stitch-carousel {
+    display: flex;
+    gap: var(--stitch-space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+.stitch-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.stitch-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stitch-carousel::-webkit-scrollbar-thumb {
+    background: var(--stitch-color-border);
+    border-radius: var(--stitch-radius-round);
+}
+
+.stitch-carousel-item {
+    scroll-snap-align: start;
+    flex: 0 0 calc(85% - var(--stitch-space-md));
+    min-width: 260px;
+    position: relative;
+}
+
+/* 5. Carrusel de Anclajes (Flechas CSS) */
+.stitch-slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stitch-slider-slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: var(--stitch-radius-md);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.stitch-slider-slides::-webkit-scrollbar {
+    display: none;
+}
+
+.stitch-slide {
+    scroll-snap-align: center;
+    flex: 0 0 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--stitch-color-bg-alt);
+    height: 200px;
+    font-weight: 500;
+}
+
+.stitch-slider-arrow {
+    background-color: var(--stitch-color-bg);
+    border: 1px solid var(--stitch-color-border);
+    color: var(--stitch-color-text);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.stitch-slider-arrow:hover {
+    background-color: var(--stitch-color-bg-alt);
+}
+
+/* 6. Galería Fotográfica (CSS Grid) */
+.stitch-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--stitch-space-md);
+}
+
+.stitch-gallery-img {
+    width: 100%;
+    height: 140px;
+    border-radius: var(--stitch-radius-md);
+    background-color: var(--stitch-color-border);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.stitch-gallery-img:hover {
+    transform: scale(1.03);
+}
+
+/* 7. Menú Flotante Sticky */
+.stitch-sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--stitch-color-border);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-radius: var(--stitch-radius-md);
+}
+
+.stitch-sticky-links {
+    display: flex;
+    gap: 16px;
+}
+
+.stitch-sticky-links a {
+    color: var(--stitch-color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+.stitch-sticky-links a:hover {
+    color: var(--stitch-color-primary);
+}
+
+/* ==========================================================
+   📐 SISTEMA DE GRID (LAYOUT RESPONSIVE PARA IA)
+   ========================================================== */
+.stitch-grid {
+    display: grid;
+    gap: var(--stitch-space-lg);
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.stitch-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (min-width: 768px) {
+    .stitch-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stitch-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stitch-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stitch-grid-1-2 {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .stitch-grid-2-1 {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    /* Utilidades de Envergadura (Spanning) */
+    .stitch-col-span-2 {
+        grid-column: span 2;
+    }
+
+    .stitch-col-span-3 {
+        grid-column: span 3;
+    }
+
+    .stitch-col-span-full {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ==========================================================
+   🚀 COMPONENTES PRO: NAVEGACIÓN AVANZADA
+   ========================================================== */
+/* Breadcrumbs */
+.stitch-breadcrumb { display: flex; gap: 8px; font-size: 0.875rem; color: var(--stitch-color-text-muted); list-style: none; padding: 0; margin: 0; align-items: center; flex-wrap: wrap;}
+.stitch-breadcrumb a { color: var(--stitch-color-primary); text-decoration: none; font-weight: 500; }
+.stitch-breadcrumb a:hover { text-decoration: underline; }
+.stitch-breadcrumb li + li::before { content: '/'; margin-right: 8px; color: var(--stitch-color-border); font-weight: bold;}
+
+/* Mega Menu / Dropdown */
+.stitch-dropdown { position: relative; display: inline-block; }
+.stitch-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--stitch-color-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: var(--stitch-radius-md); padding: var(--stitch-space-sm); min-width: 200px; z-index: 50; border: 1px solid var(--stitch-color-border); flex-direction: column; gap: 4px; margin-top: 4px;}
+.stitch-dropdown:hover .stitch-dropdown-menu, .stitch-dropdown:focus-within .stitch-dropdown-menu { display: flex; }
+.stitch-dropdown-item { padding: 8px 12px; text-decoration: none; color: var(--stitch-color-text); font-size: 0.875rem; border-radius: var(--stitch-radius-sm); transition: background 0.2s; }
+.stitch-dropdown-item:hover { background: var(--stitch-color-bg-alt); color: var(--stitch-color-primary); }
+
+/* Sidebar Colapsable (CSS-Only Checkbox Hack) */
+.stitch-sidebar-toggle-input { display: none; }
+.stitch-sidebar-drawer { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: var(--stitch-color-bg); box-shadow: 4px 0 24px rgba(0,0,0,0.15); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; padding: var(--stitch-space-lg); padding-top: 64px; overflow-y: auto;}
+.stitch-sidebar-toggle-input:checked ~ .stitch-sidebar-drawer { left: 0; }
+.stitch-sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(32,33,36,0.6); backdrop-filter: blur(2px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.stitch-sidebar-toggle-input:checked ~ .stitch-sidebar-overlay { opacity: 1; pointer-events: auto; }
+.stitch-drawer-close { position: absolute; top: 16px; right: 16px; cursor: pointer; padding: 8px; font-weight: bold; border-radius: var(--stitch-radius-sm); color: var(--stitch-color-text-muted); transition: background 0.2s;}
+.stitch-drawer-close:hover { background: var(--stitch-color-bg-alt); color: var(--stitch-color-text);}
+
+/* ==========================================================
+   📊 DATA-VIZ (VISUALIZACIÓN DE DATOS CSS)
+   ========================================================== */
+/* Bar Chart */
+.stitch-bar-chart { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.stitch-bar-row { display: flex; align-items: center; gap: 12px; font-size: 0.875rem; }
+.stitch-bar-label { width: 80px; font-weight: 500; color: var(--stitch-color-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink:0;}
+.stitch-bar-track { flex: 1; height: 24px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-sm); overflow: hidden; border: 1px solid var(--stitch-color-border);}
+.stitch-bar-fill { height: 100%; background: var(--stitch-color-primary); transition: width 0.5s ease-out; display: flex; align-items: center; padding-left: 8px; color: white; font-weight: bold; font-size: 0.75rem;}
+.stitch-bar-value { width: 40px; text-align: right; color: var(--stitch-color-text-muted); font-weight: 600; flex-shrink:0;}
+
+/* Donut Chart */
+.stitch-donut { width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 0 0 1px var(--stitch-color-border);}
+.stitch-donut::before { content: ""; width: 80px; height: 80px; border-radius: 50%; background: var(--stitch-color-bg); position: absolute; box-shadow: 0 0 0 1px var(--stitch-color-border);}
+.stitch-donut-value { position: relative; font-weight: 700; font-size: 1.5rem; color: var(--stitch-color-text); }
+
+/* Timeline */
+.stitch-timeline { border-left: 2px solid var(--stitch-color-border); padding-left: 24px; margin-left: 12px; display: flex; flex-direction: column; gap: 24px; margin-top: 16px;}
+.stitch-timeline-item { position: relative; }
+.stitch-timeline-item::before { content: ""; position: absolute; left: -31px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--stitch-color-primary); border: 2px solid var(--stitch-color-bg); box-shadow: 0 0 0 1px var(--stitch-color-border);}
+.stitch-timeline-date { font-size: 0.75rem; color: var(--stitch-color-text-muted); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
+.stitch-timeline-content { font-size: 0.875rem; background: var(--stitch-color-bg-alt); padding: 16px; border-radius: var(--stitch-radius-md); color: var(--stitch-color-text); border: 1px solid var(--stitch-color-border);}
+
+/* ==========================================================
+   🔔 FEEDBACK PRO Y MICRO-INTERACCIONES
+   ========================================================== */
+/* Toast Notification Simulation */
+.stitch-toast-container { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; pointer-events: none;}
+.stitch-toast { background: var(--stitch-color-text); color: var(--stitch-color-bg); padding: 12px 20px; border-radius: var(--stitch-radius-md); font-size: 0.875rem; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; pointer-events: auto; animation: stitch-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1);}
+@keyframes stitch-slide-up { 0% { opacity: 0; transform: translateY(30px) scale(0.9); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+.stitch-toast-icon { color: var(--stitch-color-bg-alt); font-size: 1.25rem; }
+
+/* Empty States */
+.stitch-empty-state { padding: 48px 24px; text-align: center; border: 2px dashed var(--stitch-color-border); border-radius: var(--stitch-radius-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--stitch-color-bg); margin-bottom: 24px;}
+.stitch-empty-icon { font-size: 3rem; color: var(--stitch-color-border); margin-bottom: 16px; display: block;}
+.stitch-empty-title { font-weight: 600; font-size: 1.25rem; margin-bottom: 8px; color: var(--stitch-color-text); }
+.stitch-empty-body { color: var(--stitch-color-text-muted); font-size: 0.875rem; max-width: 300px; margin-bottom: 24px; line-height: 1.5; margin-left: auto; margin-right: auto;}
+
+/* Step Indicator */
+.stitch-steps { display: flex; align-items: center; justify-content: space-between; width: 100%; position: relative; max-width: 400px; margin: 0 auto 32px auto;}
+.stitch-steps::before { content: ""; position: absolute; top: 16px; left: 16px; right: 16px; height: 2px; background: var(--stitch-color-border); z-index: 0; }
+.stitch-step { width: 32px; height: 32px; border-radius: 50%; background: var(--stitch-color-bg); border: 2px solid var(--stitch-color-border); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.875rem; position: relative; z-index: 1; color: var(--stitch-color-text-muted); transition: all 0.3s; }
+.stitch-step.active { border-color: var(--stitch-color-primary); background: var(--stitch-color-primary); color: white; }
+.stitch-step.completed { border-color: var(--stitch-color-primary); background: var(--stitch-color-bg); color: var(--stitch-color-primary); }
+.stitch-step-label { position: absolute; top: 40px; font-size: 0.75rem; color: var(--stitch-color-text-muted); white-space: nowrap; font-weight: 500;}
+
+/* ==========================================================
+   📝 FORMULARIOS PRO
+   ========================================================== */
+/* Input con Icono */
+.stitch-input-icon-wrapper { position: relative; display: flex; align-items: center; width: 100%; max-width: 400px; margin-bottom: var(--stitch-space-md);}
+.stitch-input-icon-wrapper .stitch-icon { position: absolute; left: 12px; font-size: 1.25rem; pointer-events: none; opacity: 0.5;}
+.stitch-input-icon-wrapper .stitch-input { padding-left: 40px; width: 100%; }
+
+/* Multi-select Chips */
+.stitch-chips-input { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; border: 1px solid var(--stitch-color-border); border-radius: var(--stitch-radius-sm); background: var(--stitch-color-bg); min-height: 48px; width: 100%; max-width: 400px; margin-bottom: var(--stitch-space-md);}
+.stitch-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--stitch-color-bg-alt); padding: 4px 12px; border-radius: 16px; font-size: 0.8125rem; font-weight: 500; color: var(--stitch-color-text); border: 1px solid var(--stitch-color-border); }
+.stitch-chip-close { cursor: pointer; color: var(--stitch-color-text-muted); font-weight: bold; font-size: 1rem; line-height: 1; margin-left: 2px;}
+.stitch-chip-close:hover { color: var(--stitch-color-danger); }
+.stitch-chips-input input { border: none; outline: none; flex: 1; min-width: 80px; background: transparent; font-size: 0.875rem; color: var(--stitch-color-text); padding: 4px; }
+
+/* File Dropzone */
+.stitch-dropzone { border: 2px dashed var(--stitch-color-border); border-radius: var(--stitch-radius-md); padding: 40px 24px; text-align: center; background: var(--stitch-color-bg); cursor: pointer; transition: all 0.2s; width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; margin-bottom: var(--stitch-space-md);}
+.stitch-dropzone:hover { border-color: var(--stitch-color-primary); background: #f8faff; }
+.stitch-dropzone-icon { font-size: 3rem; margin-bottom: 12px; color: var(--stitch-color-primary); opacity: 0.8; }
+.stitch-dropzone-title { font-size: 1rem; font-weight: 600; color: var(--stitch-color-text); margin-bottom: 4px; }
+.stitch-dropzone-desc { font-size: 0.875rem; color: var(--stitch-color-text-muted); }</code></pre>
+                    </div>
+                </details>
+
+                <h3 class="stitch-h3" style="color: #000; margin-top: 24px;">Paso 2: Usa este 'System Prompt'</h3>
+                <p class="stitch-muted" style="color: #fff; text-shadow: 1px 1px 0px #000;">Permite que IAs te escupan diseño Retro puro con las mismas clases base.</p>
+                <details class="stitch-code-block" open>
+                    <summary>👁️ Prompt Maestro para IAs (Entorno Neo-Brutalista)</summary>
+                    <div class="stitch-code-content">
+                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar Prompt', 2000);">Copiar Prompt</button>
+<pre><code>Eres un Desarrollador Front-end experto especializado en el Framework de Google Stitch (Fase Neo-Brutalista).
+=========================================
+OBJETIVO: Diseñar una pantalla vibrante para [RELLENA AQUÍ].
+=========================================
+REGLAS ESTRICTAS DE CSS:
+- NO utilices estilos en línea (`style="...""`).
+- Usa ÚNICAMENTE las siguientes clases HTML que están vinculadas a nuestro motor de impacto:
+  - `.stitch-container` para cajas base con hard-shadows.
+  - Textos agresivos: `.stitch-h1`, `.stitch-h2`, `.stitch-body` (títulos mayúsculos recomendados).
+  - Botones rebotadores: `.stitch-btn-primary` (Púrpura), `.stitch-btn-secondary` (Amarillo), `.stitch-btn-outline` (Blanco).
+  - Formularios: agrupa un `.stitch-label` y un `.stitch-input`.
+  - Estados: `.stitch-badge-primary`, `.stitch-badge-success`.
+  
+Entrega SOLAMENTE el código HTML semántico.</code></pre>
+                    </div>
+                </details>
+            </div>
+
+            <!-- COMPONENTES DE EJEMPLO DE LA DEMO -->
+
+            <div id="typography" class="stitch-container">
+                <h2 class="stitch-section-title">Jerarquía Tipográfica Fuerte</h2>
+                <h1 class="stitch-h1">Heavy weight Header</h1>
+                <p class="stitch-body">Las tipografías tienen que ser consistentes, gruesas (`font-weight: 800` o `900`), a menudo usando mayúsculas. Los contenedores flotan con sombras estáticas sólidas que no se difuminan nunca.</p>
+                <span class="stitch-muted">Texto base oscuro, con mayor presencia que en diseños minimalistas.</span>
+                
+                <details class="stitch-code-block">
+                    <summary>Ver Código HTML</summary>
+                    <div class="stitch-code-content">
+                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <pre><code>&lt;div class="stitch-container"&gt;
+  &lt;h1 class="stitch-h1"&gt;Heavy weight Header&lt;/h1&gt;
+  &lt;p class="stitch-body"&gt;Contenido limpio.&lt;/p&gt;
+  &lt;span class="stitch-muted"&gt;Texto mutado fuerte.&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </details>
+            </div>
+
+            <div id="buttons" class="stitch-container">
+                <h2 class="stitch-section-title">Botones Físicos Relevantes</h2>
+                <div class="stitch-btn-group">
+                    <button class="stitch-btn stitch-btn-primary">Guardar Progreso</button>
+                    <button class="stitch-btn stitch-btn-secondary">Siguiente Fase</button>
+                    <button class="stitch-btn stitch-btn-outline">Saltar Tutorial</button>
+                </div>
+
+                <details class="stitch-code-block">
+                    <summary>Ver Código HTML</summary>
+                    <div class="stitch-code-content">
+                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <pre><code>&lt;!-- Prueba hacer clic en los botones. ¡Física de la época! --&gt;
+&lt;div class="stitch-btn-group"&gt;
+  &lt;button class="stitch-btn stitch-btn-primary"&gt;Guardar Progreso&lt;/button&gt;
+  &lt;button class="stitch-btn stitch-btn-secondary"&gt;Siguiente Fase&lt;/button&gt;
+  &lt;button class="stitch-btn stitch-btn-outline"&gt;Saltar Tutorial&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </details>
+            </div>
+
+            <div id="forms" class="stitch-container">
+                <h2 class="stitch-section-title">Campos de Acción</h2>
+                <div class="stitch-form-group">
+                    <label class="stitch-label" for="txtEmail">Nombre del Proyecto Colaborativo</label>
+                    <input type="text" id="txtEmail" class="stitch-input" placeholder="Ej: Fase Beta 2.0">
+                </div>
+                
+                <details class="stitch-code-block">
+                    <summary>Ver Código HTML</summary>
+                    <div class="stitch-code-content">
+                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <pre><code>&lt;!-- Campo de texto con estado de Focus colorido --&gt;
+&lt;div class="stitch-form-group"&gt;
+  &lt;label class="stitch-label" for="txtEmail"&gt;Nombre del Proyecto&lt;/label&gt;
+  &lt;input type="text" id="txtEmail" class="stitch-input" placeholder="Ej: Fase Beta 2.0"&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </details>
+            </div>
+
+            <div id="feedback" class="stitch-container">
+                <h2 class="stitch-section-title">Avisos (Badges)</h2>
+                <div class="flex-row">
+                    <span class="stitch-badge stitch-badge-neutral">Bloqueado</span>
+                    <span class="stitch-badge stitch-badge-primary">Beta App</span>
+                    <span class="stitch-badge stitch-badge-success">Aprobado</span>
+                    <span class="stitch-badge stitch-badge-danger">Alerta Sistema</span>
+                </div>
+            </div>
+
+            <div id="cards" class="stitch-container">
+                <h2 class="stitch-section-title">Tarjetas de Gran Contraste</h2>
+                <div class="flex-row" style="align-items: flex-start;">
+                    <!-- Tarjeta Simple -->
+                    <div class="stitch-card" style="width: 320px;">
+                        <div class="stitch-card-header">Suscripción PRO 🎉</div>
+                        <div class="stitch-card-body">
+                            <p class="stitch-body" style="margin:0;">Estás a un paso de dominar el diseño web táctil moderno. (Al acercar el ratón, la tarjeta rebota).</p>
+                        </div>
+                        <div class="stitch-card-footer">
+                            <button class="stitch-btn stitch-btn-outline">Rechazar Oferta</button>
+                            <button class="stitch-btn stitch-btn-secondary">Adquirir Nivel</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Métrica Dashboards -->
+                    <div class="stitch-metric-card" style="width: 200px;">
+                        <span class="stitch-metric-label">Token Stats</span>
+                        <div class="stitch-metric-value">
+                            $8,299
+                            <span class="stitch-badge stitch-badge-success" style="font-size:0.75rem;">+14% ALTO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo de Modal -->
+                <h3 class="stitch-h2" style="margin: 24px 0 12px 0;">Alertas Modales Exageradas</h3>
+                <div class="stitch-modal-overlay">
+                    <div class="stitch-modal">
+                        <div class="stitch-card-header" style="background: var(--stitch-color-danger); color: #fff;">¡Atención Máxima!</div>
+                        <div class="stitch-card-body">
+                            <p class="stitch-body" style="margin:0;">¿Eliminar permanentemente la colección de objetos tridimensionales?</p>
+                        </div>
+                        <div class="stitch-card-footer">
+                            <button class="stitch-btn stitch-btn-outline">Mejor no</button>
+                            <button class="stitch-btn stitch-btn-primary" style="background-color: var(--stitch-color-danger); border-color: #000;">Borralo 🧨</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tables" class="stitch-container">
+                <h2 class="stitch-section-title">Grillas de Celdas</h2>
+                <div class="stitch-table-wrapper">
+                    <table class="stitch-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre Documento</th>
+                                <th>Autor/a</th>
+                                <th>Peso (Mb)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div style="font-weight:800; text-transform:uppercase;">Stitch_Logo_Final_V4.fig</div><span class="stitch-muted">Ilustración Vectorial</span></td>
+                                <td>Alex M.</td>
+                                <td>43.2</td>
+                                <td><span class="stitch-badge stitch-badge-success">Listo</span></td>
+                            </tr>
+                            <tr>
+                                <td><div style="font-weight:800; text-transform:uppercase;">Branding_Draft_01.pdf</div><span class="stitch-muted">Anotaciones de color</span></td>
+                                <td>Sarah C.</td>
+                                <td>1.5</td>
+                                <td><span class="stitch-badge stitch-badge-neutral">En Pausa</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="nav" class="stitch-container">
+                <h2 class="stitch-section-title">Pestañas Físicas (Tabs)</h2>
+                <div class="stitch-tabs">
+                    <div class="stitch-tab stitch-tab-active">Dashboard Principal</div>
+                    <div class="stitch-tab">Mi Equipo</div>
+                    <div class="stitch-tab">Ajustes Retro</div>
+                </div>
+                <p class="stitch-body" style="padding: 16px; border: 3px solid #000; background: #fff;">Las pestañas en brutalismo se levantan rompiendo la línea, como si fuesen carpetas de papel reales frente a ti.</p>
+            </div>
+
+            <!-- ============================================
+                 🚀 10. NAVEGACIÓN AVANZADA
+                 ============================================ -->
+            <div id="nav-pro" class="stitch-container">
+                <span class="stitch-section-title" style="color: var(--stitch-color-primary);">🚀 Navegación Pro</span>
+
+                <h2 class="stitch-h1">Breadcrumbs, Dropdowns y Sidebar</h2>
+                <p class="stitch-body">Componentes de orientación estructural para apps con profundidad de navegación. Todo Cero JS.</p>
+
+                <h3 class="stitch-h2" style="margin-top: 24px;">Breadcrumbs (Migas de Pan)</h3>
+                <ul class="stitch-breadcrumb">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Categoría</a></li>
+                    <li>Detalle del Artículo</li>
+                </ul>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">Dropdown Menu (Hover)</h3>
+                <div class="stitch-dropdown">
+                    <button class="stitch-btn stitch-btn-primary">Opciones ▾</button>
+                    <div class="stitch-dropdown-menu">
+                        <a href="#" class="stitch-dropdown-item">✏️ Editar perfil</a>
+                        <a href="#" class="stitch-dropdown-item">⚙️ Configuración</a>
+                        <a href="#" class="stitch-dropdown-item">📊 Estadísticas</a>
+                        <a href="#" class="stitch-dropdown-item" style="color: var(--stitch-color-danger);">🗑️ Eliminar cuenta</a>
+                    </div>
+                </div>
+                <p class="stitch-muted" style="margin-top: 12px;">Pasa el ratón sobre el botón para desplegar el menú. Usa <code>:hover</code> y <code>:focus-within</code>.</p>
+            </div>
+
+            <!-- ============================================
+                 📊 11. DATA-VIZ (VISUALIZACIÓN DE DATOS)
+                 ============================================ -->
+            <div id="data-viz" class="stitch-container">
+                <span class="stitch-section-title" style="color: var(--stitch-color-primary);">📊 Data-Viz</span>
+
+                <h2 class="stitch-h1">Gráficos y Líneas de Tiempo</h2>
+                <p class="stitch-body">Visualización de datos construida 100% con CSS. Ideal para Dashboards sin librerías externas.</p>
+
+                <h3 class="stitch-h2" style="margin-top: 24px;">Bar Chart Horizontal</h3>
+                <div class="stitch-bar-chart">
+                    <div class="stitch-bar-row">
+                        <span class="stitch-bar-label">Chrome</span>
+                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 65%;"></div></div>
+                        <span class="stitch-bar-value">65%</span>
+                    </div>
+                    <div class="stitch-bar-row">
+                        <span class="stitch-bar-label">Safari</span>
+                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 19%; background: var(--stitch-color-success);"></div></div>
+                        <span class="stitch-bar-value">19%</span>
+                    </div>
+                    <div class="stitch-bar-row">
+                        <span class="stitch-bar-label">Firefox</span>
+                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 4%; background: var(--stitch-color-danger);"></div></div>
+                        <span class="stitch-bar-value">4%</span>
+                    </div>
+                    <div class="stitch-bar-row">
+                        <span class="stitch-bar-label">Edge</span>
+                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 12%; background: #7b61ff;"></div></div>
+                        <span class="stitch-bar-value">12%</span>
+                    </div>
+                </div>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">Donut Chart (Conic Gradient)</h3>
+                <div class="flex-row" style="gap: 40px;">
+                    <div>
+                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-primary) 0% 72%, var(--stitch-color-bg-alt) 72% 100%);">
+                            <span class="stitch-donut-value">72%</span>
+                        </div>
+                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Espacio Usado</span>
+                    </div>
+                    <div>
+                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-success) 0% 45%, var(--stitch-color-bg-alt) 45% 100%);">
+                            <span class="stitch-donut-value">45%</span>
+                        </div>
+                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Conversión</span>
+                    </div>
+                    <div>
+                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-danger) 0% 12%, var(--stitch-color-bg-alt) 12% 100%);">
+                            <span class="stitch-donut-value">12%</span>
+                        </div>
+                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Errores</span>
+                    </div>
+                </div>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">Timeline (Historial de Actividad)</h3>
+                <div class="stitch-timeline">
+                    <div class="stitch-timeline-item">
+                        <span class="stitch-timeline-date">27 Mar 2026 · 20:00</span>
+                        <div class="stitch-timeline-content">Se añadieron <strong>12 Componentes Pro</strong> al sistema Stitch Level 1.</div>
+                    </div>
+                    <div class="stitch-timeline-item">
+                        <span class="stitch-timeline-date">27 Mar 2026 · 19:50</span>
+                        <div class="stitch-timeline-content">Grid Responsivo implementado con clases <code>.stitch-grid-*</code>.</div>
+                    </div>
+                    <div class="stitch-timeline-item">
+                        <span class="stitch-timeline-date">27 Mar 2026 · 18:30</span>
+                        <div class="stitch-timeline-content">Primera inyección de Componentes Avanzados CSS-Only (Tooltips, Skeletons, Carruseles).</div>
+                    </div>
+                    <div class="stitch-timeline-item">
+                        <span class="stitch-timeline-date">26 Mar 2026</span>
+                        <div class="stitch-timeline-content">Creación del repositorio Google Stitch Styles con 6 niveles de diseño.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 🔔 12. FEEDBACK PRO
+                 ============================================ -->
+            <div id="feedback-pro" class="stitch-container">
+                <span class="stitch-section-title" style="color: var(--stitch-color-primary);">🔔 Feedback Pro</span>
+
+                <h2 class="stitch-h1">Toasts, Empty States y Steps</h2>
+                <p class="stitch-body">Micro-interacciones y estados vacíos para flujos de usuario profesionales.</p>
+
+                <h3 class="stitch-h2" style="margin-top: 24px;">Toast Notification (Simulación Fija)</h3>
+                <div style="position: relative; height: 80px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-md); overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 12px;">
+                    <div class="stitch-toast" style="position: relative; bottom: auto; right: auto;">
+                        <span class="stitch-toast-icon">✅</span>
+                        Registro guardado correctamente.
+                    </div>
+                </div>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">Empty State (Sin Datos)</h3>
+                <div class="stitch-empty-state">
+                    <span class="stitch-empty-icon">📭</span>
+                    <span class="stitch-empty-title">No tienes mensajes</span>
+                    <span class="stitch-empty-body">Cuando recibas tu primer mensaje, aparecerá aquí. ¡Mantente atento!</span>
+                    <button class="stitch-btn stitch-btn-primary">Escribir mensaje</button>
+                </div>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">Step Indicator (Onboarding)</h3>
+                <div class="stitch-steps">
+                    <div class="stitch-step completed">
+                        ✓
+                        <span class="stitch-step-label">Cuenta</span>
+                    </div>
+                    <div class="stitch-step active">
+                        2
+                        <span class="stitch-step-label">Perfil</span>
+                    </div>
+                    <div class="stitch-step">
+                        3
+                        <span class="stitch-step-label">Pago</span>
+                    </div>
+                    <div class="stitch-step">
+                        4
+                        <span class="stitch-step-label">Confirmar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 📝 13. FORMULARIOS PRO
+                 ============================================ -->
+            <div id="forms-pro" class="stitch-container">
+                <span class="stitch-section-title" style="color: var(--stitch-color-primary);">📝 Formularios Pro</span>
+
+                <h2 class="stitch-h1">Inputs Avanzados y Dropzones</h2>
+                <p class="stitch-body">Controles de formulario de nivel Enterprise: búsquedas con iconos, chips y zonas de arrastre.</p>
+
+                <h3 class="stitch-h2" style="margin-top: 24px;">Input con Icono (Búsqueda)</h3>
+                <div class="stitch-input-icon-wrapper">
+                    <span class="stitch-icon">🔍</span>
+                    <input type="text" class="stitch-input" placeholder="Buscar usuarios, proyectos...">
+                </div>
+                <div class="stitch-input-icon-wrapper">
+                    <span class="stitch-icon">✉️</span>
+                    <input type="email" class="stitch-input" placeholder="correo@empresa.com">
+                </div>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">Multi-Select Chips</h3>
+                <div class="stitch-chips-input">
+                    <span class="stitch-chip">React <span class="stitch-chip-close">×</span></span>
+                    <span class="stitch-chip">TypeScript <span class="stitch-chip-close">×</span></span>
+                    <span class="stitch-chip">Node.js <span class="stitch-chip-close">×</span></span>
+                    <input type="text" placeholder="Añadir tecnología...">
+                </div>
+
+                <h3 class="stitch-h2" style="margin-top: 40px;">File Dropzone</h3>
+                <div class="stitch-dropzone">
+                    <span class="stitch-dropzone-icon">📁</span>
+                    <span class="stitch-dropzone-title">Arrastra tu archivo aquí</span>
+                    <span class="stitch-dropzone-desc">o haz clic para seleccionar · PNG, JPG, PDF (máx. 10MB)</span>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+</body>
+</html>

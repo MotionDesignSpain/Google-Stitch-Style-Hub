@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stitch Design Engine — Framework CSS Modular para IA</title>
+    <meta name="description" content="Framework CSS modular y arquitectónico diseñado para controlar la generación de código IA. Optimiza tokens, estructura HTML puro y escala con 6 niveles de diseño profesional.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==============================
+           RESET & VARIABLES
+           ============================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --c-bg: #0a0a0f;
+            --c-surface: #111118;
+            --c-surface-alt: #1a1a24;
+            --c-border: rgba(255,255,255,0.08);
+            --c-border-hover: rgba(255,255,255,0.15);
+            --c-text: #f0f0f5;
+            --c-text-muted: #8888a0;
+            --c-primary: #6366f1;
+            --c-primary-glow: rgba(99,102,241,0.15);
+            --c-accent: #22d3ee;
+            --c-accent-glow: rgba(34,211,238,0.1);
+            --c-success: #10b981;
+            --c-danger: #ef4444;
+            --c-pink: #ec4899;
+            --c-yellow: #fbbf24;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--c-bg);
+            color: var(--c-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ==============================
+           LAYOUT
+           ============================== */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ==============================
+           NAV
+           ============================== */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10,10,15,0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--c-border);
+            padding: 14px 0;
+        }
+        .nav .container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; color: var(--c-text); text-decoration: none; }
+        .nav-brand span { background: linear-gradient(135deg, var(--c-primary), var(--c-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--c-text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--c-text); }
+        .nav-badge { background: var(--c-primary); color: white; font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; font-weight: 700; letter-spacing: 0.5px; }
+
+        /* ==============================
+           HERO
+           ============================== */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--c-primary-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            padding: 6px 18px 6px 8px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: var(--c-text-muted);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        .hero-pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-success); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto; margin-right: auto;
+        }
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--c-primary), var(--c-accent), var(--c-pink));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--c-text-muted);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* ==============================
+           BUTTONS
+           ============================== */
+        .btn {
+            padding: 14px 28px; border-radius: 12px; font-size: 0.9rem;
+            font-weight: 600; cursor: pointer; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.2s; border: none; font-family: var(--font);
+        }
+        .btn-primary { background: var(--c-primary); color: #fff; }
+        .btn-primary:hover { background: #5558e6; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.3); }
+        .btn-outline { background: transparent; color: var(--c-text); border: 1px solid var(--c-border); }
+        .btn-outline:hover { border-color: var(--c-text-muted); background: var(--c-surface); }
+
+        /* ==============================
+           STATS BAR
+           ============================== */
+        .stats {
+            display: flex; justify-content: center; gap: 48px;
+            padding: 48px 0;
+            border-top: 1px solid var(--c-border);
+            border-bottom: 1px solid var(--c-border);
+            margin-bottom: 80px;
+        }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: var(--c-text); }
+        .stat-value .accent { color: var(--c-accent); }
+        .stat-label { font-size: 0.8rem; color: var(--c-text-muted); margin-top: 4px; font-weight: 500; }
+
+        /* ==============================
+           SECTION HEADER
+           ============================== */
+        .section { padding: 40px 0 80px; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem; font-weight: 700;
+            color: var(--c-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section-desc {
+            font-size: 1rem;
+            color: var(--c-text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        /* ==============================
+           METHODOLOGY (3-Phase Flow)
+           ============================== */
+        .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+        .phase {
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            position: relative;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+        .phase:hover { border-color: var(--c-border-hover); transform: translateY(-2px); }
+        .phase-number {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .phase:nth-child(1) .phase-number { background: var(--c-primary-glow); color: var(--c-primary); border: 1px solid rgba(99,102,241,0.3); }
+        .phase:nth-child(2) .phase-number { background: var(--c-accent-glow); color: var(--c-accent); border: 1px solid rgba(34,211,238,0.3); }
+        .phase:nth-child(3) .phase-number { background: rgba(16,185,129,0.1); color: var(--c-success); border: 1px solid rgba(16,185,129,0.3); }
+        .phase h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+        .phase p { font-size: 0.875rem; color: var(--c-text-muted); line-height: 1.6; }
+        .phase-tag {
+            display: inline-block; margin-top: 16px;
+            font-size: 0.7rem; font-weight: 600;
+            padding: 4px 10px; border-radius: 6px;
+            background: var(--c-surface-alt);
+            color: var(--c-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==============================
+           FEATURES GRID
+           ============================== */
+        .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .feature {
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: border-color 0.3s;
+        }
+        .feature:hover { border-color: var(--c-border-hover); }
+        .feature-icon { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+        .feature h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature p { font-size: 0.85rem; color: var(--c-text-muted); line-height: 1.6; }
+
+        /* ==============================
+           DEMO GRID (6 Levels)
+           ============================== */
+        .demos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .demo-card {
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-decoration: none;
+            color: var(--c-text);
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .demo-card:hover { border-color: var(--c-border-hover); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+        .demo-card::after {
+            content: '→'; position: absolute; top: 24px; right: 24px;
+            font-size: 1.2rem; opacity: 0; transform: translateX(-8px);
+            transition: all 0.25s; color: var(--c-text-muted);
+        }
+        .demo-card:hover::after { opacity: 1; transform: translateX(0); }
+        .demo-level {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 10px; display: block;
+        }
+        .demo-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+        .demo-card p { font-size: 0.825rem; color: var(--c-text-muted); line-height: 1.5; }
+        .demo-tech {
+            display: flex; gap: 6px; margin-top: 16px; flex-wrap: wrap;
+        }
+        .demo-tech span {
+            font-size: 0.65rem; font-weight: 600;
+            padding: 3px 8px; border-radius: 4px;
+            background: var(--c-surface-alt);
+            color: var(--c-text-muted);
+        }
+
+        /* Custom card accents */
+        .demo-card[data-level="1"]:hover { border-color: #4285f4; }
+        .demo-card[data-level="1"] .demo-level { color: #4285f4; }
+        .demo-card[data-level="2"]:hover { border-color: #1a73e8; }
+        .demo-card[data-level="2"] .demo-level { color: #1a73e8; }
+        .demo-card[data-level="3"]:hover { border-color: var(--c-pink); }
+        .demo-card[data-level="3"] .demo-level { color: var(--c-pink); }
+        .demo-card[data-level="4"]:hover { border-color: var(--c-yellow); }
+        .demo-card[data-level="4"] .demo-level { color: var(--c-yellow); }
+        .demo-card[data-level="5"]:hover { border-color: #ededed; }
+        .demo-card[data-level="5"] .demo-level { color: #ededed; }
+        .demo-card[data-level="6"]:hover { border-color: #1cb0f6; }
+        .demo-card[data-level="6"] .demo-level { color: #1cb0f6; }
+
+        /* ==============================
+           ARCHITECTURE PREVIEW
+           ============================== */
+        .arch-box {
+            background: var(--c-surface);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius);
+            padding: 32px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: var(--c-text-muted);
+            overflow-x: auto;
+            white-space: pre;
+            margin-top: 32px;
+        }
+        .arch-box .comment { color: #555570; }
+        .arch-box .section-name { color: var(--c-accent); }
+        .arch-box .class-name { color: var(--c-pink); }
+
+        /* ==============================
+           FOOTER
+           ============================== */
+        .footer {
+            border-top: 1px solid var(--c-border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--c-text-muted);
+            font-size: 0.8rem;
+        }
+        .footer a { color: var(--c-primary); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 12px; }
+
+        /* ==============================
+           RESPONSIVE
+           ============================== */
+        @media (max-width: 768px) {
+            .phases { grid-template-columns: 1fr; }
+            .features { grid-template-columns: 1fr; }
+            .demos { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; gap: 24px; }
+            .nav-links { display: none; }
+            .hero { padding: 60px 0 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================================
+         NAV
+         ================================ -->
+    <nav class="nav">
+        <div class="container">
+            <a href="#" class="nav-brand">🧵 <span>Stitch</span> Design Engine</a>
+            <div class="nav-links">
+                <a href="#methodology">Metodología</a>
+                <a href="#features">Características</a>
+                <a href="#levels">Niveles</a>
+                <a href="#architecture">Arquitectura</a>
+                <span class="nav-badge">v2.0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================
+         HERO
+         ================================ -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-pill">
+                <span class="hero-pill-dot"></span>
+                Framework CSS Modular · Cero JavaScript · Optimizado para IA
+            </div>
+            <h1>
+                Controla tu IA.<br>
+                <span class="gradient-text">Estructura tu código.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Framework arquitectónico CSS que pone límites a la generación de código IA. 
+                Estructura primero, funcionalidad después. Diseñado para proyectos SEO-first 
+                donde cada token cuenta.
+            </p>
+            <div class="hero-actions">
+                <a href="#levels" class="btn btn-primary">🎨 Explorar los 6 Niveles</a>
+                <a href="#methodology" class="btn btn-outline">📐 Ver Metodología</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         STATS
+         ================================ -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value"><span class="accent">6</span></div>
+                <div class="stat-label">Niveles de Diseño</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value"><span class="accent">13</span></div>
+                <div class="stat-label">Categorías de Componentes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value"><span class="accent">0</span></div>
+                <div class="stat-label">Líneas de JavaScript</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value"><span class="accent">100%</span></div>
+                <div class="stat-label">CSS Puro + HTML Semántico</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================
+         METODOLOGÍA
+         ================================ -->
+    <section id="methodology" class="section">
+        <div class="container">
+            <span class="section-label">Metodología</span>
+            <h2 class="section-title">Estructura → Aprobación → Inyección</h2>
+            <p class="section-desc">
+                Un flujo de trabajo profesional de 3 fases que evita el código basura 
+                y garantiza que la IA trabaje dentro de los rieles que tú defines.
+            </p>
+
+            <div class="phases">
+                <!-- Phase 1 -->
+                <div class="phase">
+                    <div class="phase-number">1</div>
+                    <h3>Estructura HTML Pura</h3>
+                    <p>
+                        Se construye toda la arquitectura del sitio con HTML semántico ligero y 
+                        CSS de Stitch. Navegación, secciones, componentes — todo visual y funcional 
+                        sin una sola línea de JS.
+                    </p>
+                    <span class="phase-tag">📐 html + css puro</span>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="phase">
+                    <div class="phase-number">2</div>
+                    <h3>Aprobación del Cliente</h3>
+                    <p>
+                        El cliente revisa y aprueba la estructura visual completa. 
+                        Todo el contenido, la jerarquía SEO y la experiencia de usuario 
+                        están definidos antes de añadir complejidad.
+                    </p>
+                    <span class="phase-tag">✅ revisión + validación</span>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="phase">
+                    <div class="phase-number">3</div>
+                    <h3>Inyección Funcional</h3>
+                    <p>
+                        Solo tras la aprobación se inyecta JavaScript, PHP, MySQL 
+                        o cualquier backend necesario. Cada línea de código dinámico 
+                        tiene un propósito aprobado.
+                    </p>
+                    <span class="phase-tag">⚡ js · php · mysql</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FEATURES
+         ================================ -->
+    <section id="features" class="section">
+        <div class="container">
+            <span class="section-label">Características</span>
+            <h2 class="section-title">¿Por qué Stitch Design Engine?</h2>
+            <p class="section-desc">
+                Construido desde cero para desarrolladores que trabajan con IA 
+                y necesitan control total sobre la calidad del código generado.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Índice Maestro para IA</h3>
+                    <p>Cada archivo CSS incluye un índice comentado de 13 secciones que la IA lee al inicio. Evita clases inventadas, duplicados y código fuera de la arquitectura.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Optimización de Tokens</h3>
+                    <p>La IA no necesita "pensar" estilos desde cero. Las clases .stitch-* preexistentes reducen drásticamente el consumo de tokens en cada prompt.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <h3>SEO-First por Diseño</h3>
+                    <p>HTML semántico, una sola H1 por página, heading hierarchy estricta, títulos descriptivos y meta tags integrados. El SEO orgánico empieza en la estructura.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🚫</span>
+                    <h3>Cero JavaScript Obligatorio</h3>
+                    <p>Carruseles, dropdowns, tooltips, toggles, sidebars — todo funciona con CSS puro. La portabilidad es máxima: copia, pega, funciona.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📐</span>
+                    <h3>Grid System para IA</h3>
+                    <p>Clases como .stitch-grid-3 y .stitch-col-span-2 permiten que la IA ensamble dashboards y layouts complejos sin modificar el CSS.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎨</span>
+                    <h3>6 Niveles de Intensidad</h3>
+                    <p>Desde Pure Minimal hasta Playful 3D. Cada nivel comparte la misma arquitectura (13 secciones) pero con una identidad visual completamente distinta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         DEMO LEVELS GRID
+         ================================ -->
+    <section id="levels" class="section">
+        <div class="container">
+            <span class="section-label">Explorar</span>
+            <h2 class="section-title">6 Niveles de Diseño Arquitectónico</h2>
+            <p class="section-desc">
+                Cada nivel contiene la misma base de 13 categorías de componentes,
+                adaptados a la identidad visual del tema. Haz clic para explorar la demo interactiva.
+            </p>
+
+            <div class="demos">
+                <a href="demos/pure-minimal.html" class="demo-card" data-level="1">
+                    <span class="demo-level">Nivel 1 · Sencillo</span>
+                    <h3>Pure Minimal</h3>
+                    <p>Limpio, ligero, estructural. La base ideal para cualquier proyecto. Bordes sutiles y máximo espacio en blanco.</p>
+                    <div class="demo-tech">
+                        <span>Google Sans</span>
+                        <span>Light borders</span>
+                        <span>Flat</span>
+                    </div>
+                </a>
+                <a href="demos/corporate.html" class="demo-card" data-level="2">
+                    <span class="demo-level">Nivel 2 · Profesional</span>
+                    <h3>Corporate Elegance</h3>
+                    <p>Sombras suaves, elevaciones al hover y paletas zafiro para aplicaciones empresariales de alto nivel.</p>
+                    <div class="demo-tech">
+                        <span>Shadows</span>
+                        <span>Elevations</span>
+                        <span>Sapphire</span>
+                    </div>
+                </a>
+                <a href="demos/glassmorphism.html" class="demo-card" data-level="3">
+                    <span class="demo-level">Nivel 3 · Avanzado</span>
+                    <h3>Glass & Gradients</h3>
+                    <p>Diseño de alto impacto con cajas cristal translúcidas, backdrop-filter y gradientes oscuros vibrantes.</p>
+                    <div class="demo-tech">
+                        <span>Glassmorphism</span>
+                        <span>Blur</span>
+                        <span>Neon</span>
+                    </div>
+                </a>
+                <a href="demos/neo-brutalism.html" class="demo-card" data-level="4">
+                    <span class="demo-level">Nivel 4 · Experimental</span>
+                    <h3>Neo-Brutalism</h3>
+                    <p>Estilo atrevido tipo Figma/Gumroad. Bordes gruesos, sombras sólidas y colores primarios saturados.</p>
+                    <div class="demo-tech">
+                        <span>Hard shadows</span>
+                        <span>3px borders</span>
+                        <span>Bold</span>
+                    </div>
+                </a>
+                <a href="demos/monochrome.html" class="demo-card" data-level="5">
+                    <span class="demo-level">Nivel 5 · Stealth</span>
+                    <h3>Monochrome Dark</h3>
+                    <p>Minimalismo oscuro técnico. Fondo negro puro, sin sombras, bordes de 1px. Inspirado en Vercel y Linear.</p>
+                    <div class="demo-tech">
+                        <span>Monospace</span>
+                        <span>Pure black</span>
+                        <span>DevTool</span>
+                    </div>
+                </a>
+                <a href="demos/playful-3d.html" class="demo-card" data-level="6">
+                    <span class="demo-level">Nivel 6 · Gamification</span>
+                    <h3>Playful 3D</h3>
+                    <p>Estilo táctil basado en Duolingo y Discord. Botones apretables con física realista y colores alegres.</p>
+                    <div class="demo-tech">
+                        <span>3D buttons</span>
+                        <span>Bouncy</span>
+                        <span>Fun</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         ARCHITECTURE PREVIEW
+         ================================ -->
+    <section id="architecture" class="section">
+        <div class="container">
+            <span class="section-label">Arquitectura</span>
+            <h2 class="section-title">Índice Maestro: Lo Que la IA Lee Primero</h2>
+            <p class="section-desc">
+                Cada archivo CSS comienza con este índice comentado. La IA lo parsea al inicio 
+                y sabe exactamente qué clases existen, evitando inventar estilos innecesarios.
+            </p>
+
+            <div class="arch-box"><span class="comment">/* =========================================================================</span>
+<span class="comment">   ÍNDICE MAESTRO DE ARQUITECTURA VISUAL (AI PARSER)</span>
+<span class="comment">   -------------------------------------------------------------------------</span>
+<span class="section-name">   0.</span> Variables Globales (<span class="class-name">:root</span>)
+<span class="section-name">   1.</span> Bases Estructurales (<span class="class-name">.stitch-container</span>, <span class="class-name">.stitch-section-title</span>)
+<span class="section-name">   2.</span> Tipografía Semántica (<span class="class-name">.stitch-h1</span>, <span class="class-name">.stitch-body</span>)
+<span class="section-name">   3.</span> Botones y Acciones (<span class="class-name">.stitch-btn</span>, <span class="class-name">.stitch-btn-primary</span>)
+<span class="section-name">   4.</span> Formularios y Controles (<span class="class-name">.stitch-input</span>, <span class="class-name">.stitch-toggle</span>)
+<span class="section-name">   5.</span> Feedback Visual (<span class="class-name">.stitch-badge</span>, <span class="class-name">.stitch-avatar</span>)
+<span class="section-name">   6.</span> Progress &amp; Listas (<span class="class-name">.stitch-progress-wrapper</span>)
+<span class="section-name">   7.</span> Estructuras de Datos (<span class="class-name">.stitch-card</span>, <span class="class-name">.stitch-table</span>, <span class="class-name">.stitch-tabs</span>)
+<span class="section-name">   8.</span> Componentes Avanzados CSS-Only (<span class="class-name">.stitch-skeleton</span>, <span class="class-name">.stitch-tooltip</span>)
+<span class="section-name">   9.</span> Sistema de Grid Layout (<span class="class-name">.stitch-grid</span>, <span class="class-name">.stitch-col-span-*</span>)
+<span class="section-name">  10.</span> Navegación Avanzada (<span class="class-name">.stitch-breadcrumb</span>, <span class="class-name">.stitch-dropdown</span>)
+<span class="section-name">  11.</span> Data-Viz (<span class="class-name">.stitch-bar-chart</span>, <span class="class-name">.stitch-donut</span>, <span class="class-name">.stitch-timeline</span>)
+<span class="section-name">  12.</span> Feedback Pro (<span class="class-name">.stitch-toast</span>, <span class="class-name">.stitch-empty-state</span>, <span class="class-name">.stitch-steps</span>)
+<span class="section-name">  13.</span> Formularios Pro (<span class="class-name">.stitch-input-icon-wrapper</span>, <span class="class-name">.stitch-dropzone</span>)
+<span class="comment">   ========================================================================= */</span></div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+    <footer class="footer">
+        <div class="container">
+            <p>🧵 Stitch Design Engine — Framework CSS Modular para Proyectos Controlados por IA</p>
+            <div class="footer-links">
+                <a href="https://github.com">GitHub Repository</a>
+                <a href="#methodology">Metodología</a>
+                <a href="#levels">Demos</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
