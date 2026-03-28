@@ -62,12 +62,12 @@ Cada nivel contiene el mismo **Índice Maestro** comentado en la cabecera del CS
 
 | Nivel | Nombre | Estilo | Demo |
 |-------|--------|--------|------|
-| 1 | **Pure Minimal** | Limpio, bordes sutiles, espacio en blanco | [Ver Demo →](./docs/demos/pure-minimal.html) |
-| 2 | **Corporate Elegance** | Sombras suaves, paleta zafiro | [Ver Demo →](./docs/demos/corporate.html) |
-| 3 | **Glass & Gradients** | Glassmorphism, blur, neones | [Ver Demo →](./docs/demos/glassmorphism.html) |
-| 4 | **Neo-Brutalism** | Bordes 3px, sombras sólidas, colores saturados | [Ver Demo →](./docs/demos/neo-brutalism.html) |
-| 5 | **Monochrome Stealth** | Negro puro, 1px, monospace (Vercel/Linear) | [Ver Demo →](./docs/demos/monochrome.html) |
-| 6 | **Playful 3D** | Botones 3D, física, colores alegres (Duolingo) | [Ver Demo →](./docs/demos/playful-3d.html) |
+| 1 | **Pure Minimal** | Limpio, bordes sutiles, espacio en blanco | [Ver Demo →](./demos/pure-minimal.html) |
+| 2 | **Corporate Elegance** | Sombras suaves, paleta zafiro | [Ver Demo →](./demos/corporate.html) |
+| 3 | **Glass & Gradients** | Glassmorphism, blur, neones | [Ver Demo →](./demos/glassmorphism.html) |
+| 4 | **Neo-Brutalism** | Bordes 3px, sombras sólidas, colores saturados | [Ver Demo →](./demos/neo-brutalism.html) |
+| 5 | **Monochrome Stealth** | Negro puro, 1px, monospace (Vercel/Linear) | [Ver Demo →](./demos/monochrome.html) |
+| 6 | **Playful 3D** | Botones 3D, física, colores alegres (Duolingo) | [Ver Demo →](./demos/playful-3d.html) |
 
 ## 🚀 Uso Rápido
 
