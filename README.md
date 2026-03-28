@@ -9,12 +9,12 @@
 
 | Style | Level | Preview | Demo Link |
 | :--- | :--- | :--- | :--- |
-| **Pure Minimal** | 🟢 Level 1 | ![Minimal Preview](assets/previews/minimal.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/docs/demos/pure-minimal.html) |
-| **Corporate Pro** | 🔵 Level 2 | ![Corporate Preview](assets/previews/corporate.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/docs/demos/corporate.html) |
-| **Glassmorphism** | 🟣 Level 3 | ![Glass Preview](assets/previews/glass.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/docs/demos/glassmorphism.html) |
-| **Neo-Brutalism** | 🔴 Level 4 | ![Neo-Brutalism Preview](assets/previews/neobrutalism.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/docs/demos/neo-brutalism.html) |
-| **Monochrome** | ⚫ Level 5 | ![Monochrome Preview](assets/previews/monochrome.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/docs/demos/monochrome.html)) |
-| **Playful 3D** | 🟠 Level 6 | ![Playful Preview](assets/previews/playful.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/docs/demos/playful-3d.html)) |
+| **Pure Minimal** | 🟢 Level 1 | ![Minimal Preview](assets/previews/minimal.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/demos/pure-minimal.html) |
+| **Corporate Pro** | 🔵 Level 2 | ![Corporate Preview](assets/previews/corporate.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/demos/corporate.html) |
+| **Glassmorphism** | 🟣 Level 3 | ![Glass Preview](assets/previews/glass.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/demos/glassmorphism.html) |
+| **Neo-Brutalism** | 🔴 Level 4 | ![Neo-Brutalism Preview](assets/previews/neobrutalism.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/demos/neo-brutalism.html) |
+| **Monochrome** | ⚫ Level 5 | ![Monochrome Preview](assets/previews/monochrome.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/demos/monochrome.html)) |
+| **Playful 3D** | 🟠 Level 6 | ![Playful Preview](assets/previews/playful.png) | [View Demo](https://motiondesignspain.github.io/Google-Stitch-Style-Hub/demos/playful-3d.html)) |
 
 **Framework CSS modular y arquitectónico diseñado para controlar la generación de código IA.** Optimiza el consumo de tokens, estructura HTML puro semántico y escala con 6 niveles de diseño profesional — todo sin una sola línea de JavaScript.
 
