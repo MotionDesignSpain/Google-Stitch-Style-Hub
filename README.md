@@ -96,13 +96,13 @@ StitchDesignViewer/
 ├── docs/
 │   ├── index.html              ← Landing Page
 │   └── demos/                  ← 6 demos interactivas
-├── styles/
-│   ├── level-1-minimalist/     ← theme-minimal.css
-│   ├── level-2-corporate/      ← theme-corporate.css
-│   ├── level-3-glassmorphism/  ← theme-glass.css
-│   ├── level-4-neobrutalism/   ← theme-brutal.css
-│   ├── level-5-monochrome/     ← theme-monochrome.css
-│   └── level-6-playful3d/      ← theme-playful.css
+│   └──------ styles/           
+│   ├──------------- level-1-minimalist/     ← theme-minimal.css
+│   ├──------------- level-2-corporate/      ← theme-corporate.css
+│   ├──------------- level-3-glassmorphism/  ← theme-glass.css
+│   ├──------------- level-4-neobrutalism/   ← theme-brutal.css
+│   ├──------------- level-5-monochrome/     ← theme-monochrome.css
+│   └──------------- level-6-playful3d/      ← theme-playful.css
 ├── CONTRIBUTING.md
 ├── STYLE_GUIDE.md
 └── README.md
