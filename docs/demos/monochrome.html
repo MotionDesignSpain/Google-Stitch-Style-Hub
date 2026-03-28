@@ -1,61 +1,232 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Completa: Monochrome Stealth | Google Stitch Styles</title>
     <!-- Inter es la fuente obligatoria del desarrollo tecnico moderno -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles/level-5-monochrome/theme-monochrome.css?v=6">
+    <link rel="stylesheet" href="/Google-Stitch-Style-Hub/styles/level-5-monochrome/theme-monochrome.css?v=6">
     <style>
         /* ESTILOS INTERNOS DE LA DEMO MONOCHROME */
-        body { 
-            margin: 0; font-family: 'Inter', sans-serif; color: #fff; scroll-behavior: smooth; display: flex; 
-            background-color: #000; /* BLACK BACKGROUND */
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            scroll-behavior: smooth;
+            display: flex;
+            background-color: #000;
+            /* BLACK BACKGROUND */
             min-height: 100vh;
         }
-        ::selection { background: #333; color: #fff; }
-        
-        :root { --stitch-sidebar-width: 260px; }
-        .demo-sidebar { 
-            position: fixed; top: 0; left: 0; width: var(--stitch-sidebar-width); height: 100vh; 
-            background: #000; padding: var(--stitch-space-lg); box-sizing: border-box; overflow-y: auto; z-index: 100;
+
+        ::selection {
+            background: #333;
+            color: #fff;
+        }
+
+        :root {
+            --stitch-sidebar-width: 260px;
+        }
+
+        .demo-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--stitch-sidebar-width);
+            height: 100vh;
+            background: #000;
+            padding: var(--stitch-space-lg);
+            box-sizing: border-box;
+            overflow-y: auto;
+            z-index: 100;
             border-right: 1px solid #222;
         }
-        .demo-sidebar h3 { margin-top: 0; font-size: 0.85rem; color: #888; margin-bottom: 24px; font-weight: 500; font-family: monospace; text-transform: uppercase; letter-spacing: 1.5px;}
-        .demo-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
-        .demo-nav a { 
-            text-decoration: none; color: #aaa; font-weight: 400; font-size: 0.9rem; padding: 10px 14px; 
-            border-radius: 6px; transition: all 0.2s; display: block;
-            border: 1px solid transparent; background: transparent;
+
+        .demo-sidebar h3 {
+            margin-top: 0;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 24px;
+            font-weight: 500;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
-        .demo-nav a:hover { color: #fff; background: #111; border-color: #333; }
-        .demo-main { margin-left: var(--stitch-sidebar-width); padding: 60px var(--stitch-space-lg); width: calc(100% - var(--stitch-sidebar-width)); display: flex; justify-content: center; box-sizing: border-box; }
-        .demo-wrapper { max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 56px; }
-        .demo-header h1 { font-size: 3rem; margin: 0 0 16px 0; font-weight: 600; color: #fff; letter-spacing: -2px;}
-        .demo-header p { color: #888; font-size: 1.15rem; font-weight: 400; margin: 0; line-height: 1.6;}
+
+        .demo-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .demo-nav a {
+            text-decoration: none;
+            color: #aaa;
+            font-weight: 400;
+            font-size: 0.9rem;
+            padding: 10px 14px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: block;
+            border: 1px solid transparent;
+            background: transparent;
+        }
+
+        .demo-nav a:hover {
+            color: #fff;
+            background: #111;
+            border-color: #333;
+        }
+
+        .demo-main {
+            margin-left: var(--stitch-sidebar-width);
+            padding: 60px var(--stitch-space-lg);
+            width: calc(100% - var(--stitch-sidebar-width));
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .demo-wrapper {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        .demo-header h1 {
+            font-size: 3rem;
+            margin: 0 0 16px 0;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -2px;
+        }
+
+        .demo-header p {
+            color: #888;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin: 0;
+            line-height: 1.6;
+        }
 
         /* WIDGET DE CÓDIGO (STEALTH) */
-        .stitch-code-block { margin-top: 24px; background: #000; border-radius: 6px; overflow: hidden; border: 1px solid #333;}
-        .stitch-code-block summary { padding: 12px 16px; background: #111; color: #ccc; font-size: 0.85rem; font-weight: 500; font-family: monospace; cursor: pointer; border-bottom: 1px solid #333; outline: none; display: flex; align-items: center; gap: 12px; list-style: none; transition: background 0.2s;}
-        .stitch-code-block summary::-webkit-details-marker { display: none; }
-        .stitch-code-block summary:before { content: "►"; font-size: 0.7rem; color: #888; transition: transform 0.2s; }
-        .stitch-code-block[open] summary:before { transform: rotate(90deg); }
-        .stitch-code-block summary:hover { background: #222; color: #fff;}
-        .stitch-code-content { position: relative; padding: 20px; background: #050505;}
-        .stitch-btn-copy { position: absolute; top: 12px; right: 12px; background: #000; border: 1px solid #333; color: #888; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; font-family: monospace; cursor: pointer; transition: all 0.2s;}
-        .stitch-btn-copy:hover { border-color: #fff; color: #fff; }
-        .stitch-code-content pre { margin: 0; overflow-x: auto; color: #bbb; font-family: 'SF Mono', 'Courier New', Courier, monospace; font-size: 0.85rem; font-weight: 400; line-height: 1.6; padding-right: 80px;}
+        .stitch-code-block {
+            margin-top: 24px;
+            background: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
 
-        .stitch-onboarding-card { background: #000; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px; scroll-margin-top: 40px;}
-        .stitch-onboarding-title { color: #fff; font-size: 1.8rem; font-weight: 600; margin: 0 0 16px 0; letter-spacing: -1px; }
+        .stitch-code-block summary {
+            padding: 12px 16px;
+            background: #111;
+            color: #ccc;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: monospace;
+            cursor: pointer;
+            border-bottom: 1px solid #333;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            list-style: none;
+            transition: background 0.2s;
+        }
+
+        .stitch-code-block summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .stitch-code-block summary:before {
+            content: "►";
+            font-size: 0.7rem;
+            color: #888;
+            transition: transform 0.2s;
+        }
+
+        .stitch-code-block[open] summary:before {
+            transform: rotate(90deg);
+        }
+
+        .stitch-code-block summary:hover {
+            background: #222;
+            color: #fff;
+        }
+
+        .stitch-code-content {
+            position: relative;
+            padding: 20px;
+            background: #050505;
+        }
+
+        .stitch-btn-copy {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #000;
+            border: 1px solid #333;
+            color: #888;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .stitch-btn-copy:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .stitch-code-content pre {
+            margin: 0;
+            overflow-x: auto;
+            color: #bbb;
+            font-family: 'SF Mono', 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            line-height: 1.6;
+            padding-right: 80px;
+        }
+
+        .stitch-onboarding-card {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 40px;
+            scroll-margin-top: 40px;
+        }
+
+        .stitch-onboarding-title {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+            letter-spacing: -1px;
+        }
     </style>
 </head>
+
 <body>
 
     <aside class="demo-sidebar">
-        <a href="../index.html" style="display:flex; align-items:center; opacity: 0.8; gap:8px; text-decoration:none; color:#fff; font-size:0.85rem; margin-bottom:40px; font-weight:500; transition:all 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
+        <a href="../index.html"
+            style="display:flex; align-items:center; opacity: 0.8; gap:8px; text-decoration:none; color:#fff; font-size:0.85rem; margin-bottom:40px; font-weight:500; transition:all 0.2s;"
+            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5m7 7-7-7 7-7" />
+            </svg>
             Volver al Hub
         </a>
         <h3>Framework</h3>
@@ -67,7 +238,7 @@
             <li><a href="#cards">Bloques Contenedores</a></li>
             <li><a href="#tables">Matrices Data Grid</a></li>
             <li><a href="#nav">Navegación Router</a></li>
-                    <li><a href="#nav-pro">🚀 Navegación Pro</a></li>
+            <li><a href="#nav-pro">🚀 Navegación Pro</a></li>
             <li><a href="#data-viz">📊 Data-Viz</a></li>
             <li><a href="#feedback-pro">🔔 Feedback Pro</a></li>
             <li><a href="#forms-pro">📝 Formularios Pro</a></li>
@@ -76,24 +247,31 @@
 
     <main class="demo-main">
         <div class="demo-wrapper">
-            
+
             <header class="demo-header">
                 <h1>Monochrome Stealth.</h1>
-                <p>Cero sombras de caja. Cero colores primarios ruidosos. Total dominancia de grises finos, tipografía nítida y exactitud de píxeles. El Santo Grial de las interfaces de desarrolladores modernas.</p>
+                <p>Cero sombras de caja. Cero colores primarios ruidosos. Total dominancia de grises finos, tipografía
+                    nítida y exactitud de píxeles. El Santo Grial de las interfaces de desarrolladores modernas.</p>
             </header>
 
             <!-- SECCIÓN NUEVA: ONBOARDING Y PROMPTS -->
             <div id="setup" class="stitch-onboarding-card">
                 <h2 class="stitch-onboarding-title">Instalación del Framework 🦇</h2>
-                <p class="stitch-body" style="font-weight: 400;">Para lograr el efecto 'Stealth' es absolutamente imperativo que tu `body` sea de color netamente negro (`#000000`). Ningún gris de fondo. Este contraste puro maximiza la efectividad de los delgados bordes `#333333` que delimitan nuestra geometría estructural.</p>
-                
-                <h3 class="stitch-h3" style="color: #fff; margin-top: 32px; font-size: 1.1rem; font-weight: 500;">Paso 1: Importar CSS Monocromático</h3>
-                <p class="stitch-muted">Añade este documento a tus recursos para sobreescribir y aplanar todos los componentes visuales hacia su forma cruda.</p>
+                <p class="stitch-body" style="font-weight: 400;">Para lograr el efecto 'Stealth' es absolutamente
+                    imperativo que tu `body` sea de color netamente negro (`#000000`). Ningún gris de fondo. Este
+                    contraste puro maximiza la efectividad de los delgados bordes `#333333` que delimitan nuestra
+                    geometría estructural.</p>
+
+                <h3 class="stitch-h3" style="color: #fff; margin-top: 32px; font-size: 1.1rem; font-weight: 500;">Paso
+                    1: Importar CSS Monocromático</h3>
+                <p class="stitch-muted">Añade este documento a tus recursos para sobreescribir y aplanar todos los
+                    componentes visuales hacia su forma cruda.</p>
                 <details class="stitch-code-block">
                     <summary>src/css/theme-monochrome.css</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='OK ✓'; setTimeout(()=>this.innerText='COPY', 2000);">COPY</button>
-<pre><code>/* =========================================================================
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='OK ✓'; setTimeout(()=>this.innerText='COPY', 2000);">COPY</button>
+                        <pre><code>/* =========================================================================
    🦇 GOOGLE STITCH STYLES : MONOCHROME STEALTH (LEVEL 5)
    ========================================================================= */
 
@@ -114,13 +292,16 @@
                     </div>
                 </details>
 
-                <h3 class="stitch-h3" style="color: #fff; margin-top: 32px; font-size: 1.1rem; font-weight: 500;">Paso 2: Injectar el 'System Prompt'</h3>
-                <p class="stitch-muted">Fuerza a la IA a que aplique exclusimas etiquetas precisas, logrando interfaces estéticas que parecen codificadas por ingenieros senior.</p>
+                <h3 class="stitch-h3" style="color: #fff; margin-top: 32px; font-size: 1.1rem; font-weight: 500;">Paso
+                    2: Injectar el 'System Prompt'</h3>
+                <p class="stitch-muted">Fuerza a la IA a que aplique exclusimas etiquetas precisas, logrando interfaces
+                    estéticas que parecen codificadas por ingenieros senior.</p>
                 <details class="stitch-code-block" open>
                     <summary>docs/AI_Prompt_Directive.md</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='OK ✓'; setTimeout(()=>this.innerText='COPY', 2000);">COPY</button>
-<pre><code>Eres un Desarrollador Front-end senior actuando en un sistema UI puro y oscuro de alta tecnología (Stealth Design).
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='OK ✓'; setTimeout(()=>this.innerText='COPY', 2000);">COPY</button>
+                        <pre><code>Eres un Desarrollador Front-end senior actuando en un sistema UI puro y oscuro de alta tecnología (Stealth Design).
 =========================================
 OBJETIVO: Generar una vista terminal para [RELLENA AQUÍ].
 =========================================
@@ -142,13 +323,15 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
             <div id="typography" class="stitch-container">
                 <h2 class="stitch-section-title">01 / Contenedores y Texto</h2>
                 <h1 class="stitch-h1">Minimalismo Lineal</h1>
-                <p class="stitch-body">Las tipografías son austeras y nítidamente legibles sobre el fondo oscuro absoluto. Notarás la carencia absoluta de colores. Es puro contraste de grises.</p>
+                <p class="stitch-body">Las tipografías son austeras y nítidamente legibles sobre el fondo oscuro
+                    absoluto. Notarás la carencia absoluta de colores. Es puro contraste de grises.</p>
                 <span class="stitch-muted">Referencia suplementaria de contexto oscuro.</span>
-                
+
                 <details class="stitch-code-block">
                     <summary>Ver HTML</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='OK ✓'; setTimeout(()=>this.innerText='COPY', 2000);">COPY</button>
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='OK ✓'; setTimeout(()=>this.innerText='COPY', 2000);">COPY</button>
                         <pre><code>&lt;!-- Mismo HTML limpio y semántico. Estética técnica extrema --&gt;
 &lt;div class="stitch-container"&gt;
   &lt;h1 class="stitch-h1"&gt;Minimalismo Lineal&lt;/h1&gt;
@@ -192,14 +375,17 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                     <div class="stitch-card" style="width: 340px;">
                         <div class="stitch-card-header">Vercel Build Environment</div>
                         <div class="stitch-card-body">
-                            <p class="stitch-body" style="margin:0;">Los contenedores tienen un leve aclarado en el hover (`#0a0a0a` a `#171717`). Esto engaña al ojo para separar planos de UI sin tener que meter las sucias sombras desenfocadas o distractorias.</p>
+                            <p class="stitch-body" style="margin:0;">Los contenedores tienen un leve aclarado en el
+                                hover (`#0a0a0a` a `#171717`). Esto engaña al ojo para separar planos de UI sin tener
+                                que meter las sucias sombras desenfocadas o distractorias.</p>
                         </div>
                         <div class="stitch-card-footer">
                             <button class="stitch-btn stitch-btn-outline" style="font-family:monospace;">Abort</button>
-                            <button class="stitch-btn stitch-btn-primary" style="font-family:monospace;">Trigger Build</button>
+                            <button class="stitch-btn stitch-btn-primary" style="font-family:monospace;">Trigger
+                                Build</button>
                         </div>
                     </div>
-                    
+
                     <!-- Métrica Dashboards -->
                     <div class="stitch-metric-card" style="width: 220px;">
                         <span class="stitch-metric-label">Server Memory Use</span>
@@ -211,16 +397,22 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 </div>
 
                 <!-- Ejemplo de Modal -->
-                <h1 class="stitch-h2" style="margin: 48px 0 16px 0; font-family:monospace;">05.X / Componente Modal de Crisis</h1>
+                <h1 class="stitch-h2" style="margin: 48px 0 16px 0; font-family:monospace;">05.X / Componente Modal de
+                    Crisis</h1>
                 <div class="stitch-modal-overlay">
                     <div class="stitch-modal">
-                        <div class="stitch-card-header" style="color:var(--stitch-color-danger); border-bottom-color:#222;">Critical Action Required</div>
+                        <div class="stitch-card-header"
+                            style="color:var(--stitch-color-danger); border-bottom-color:#222;">Critical Action Required
+                        </div>
                         <div class="stitch-card-body">
-                            <p class="stitch-body" style="margin:0;">You are about to permanently delete the database cluster map. This action cannot be reversed and will result in data loss.</p>
+                            <p class="stitch-body" style="margin:0;">You are about to permanently delete the database
+                                cluster map. This action cannot be reversed and will result in data loss.</p>
                         </div>
                         <div class="stitch-card-footer" style="padding: 16px; border-top-color:#222;">
                             <button class="stitch-btn stitch-btn-outline" style="width:100%;">Keep Cluster</button>
-                            <button class="stitch-btn stitch-btn-primary" style="width:100%; background:var(--stitch-color-danger); border-color:var(--stitch-color-danger); color:#fff;">Force Delete</button>
+                            <button class="stitch-btn stitch-btn-primary"
+                                style="width:100%; background:var(--stitch-color-danger); border-color:var(--stitch-color-danger); color:#fff;">Force
+                                Delete</button>
                         </div>
                     </div>
                 </div>
@@ -240,13 +432,21 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><div style="font-weight:600; color:#fff;">Node-us-east-1</div><span class="stitch-muted" style="font-family:monospace; margin-top:4px;">Deploy via Git</span></td>
+                                <td>
+                                    <div style="font-weight:600; color:#fff;">Node-us-east-1</div><span
+                                        class="stitch-muted" style="font-family:monospace; margin-top:4px;">Deploy via
+                                        Git</span>
+                                </td>
                                 <td style="font-family:monospace; color:#888;">a3b9c2f</td>
                                 <td style="color:#bbb;">48s</td>
                                 <td><span class="stitch-badge stitch-badge-success">Ready</span></td>
                             </tr>
                             <tr>
-                                <td><div style="font-weight:600; color:#fff;">Node-eu-west-3</div><span class="stitch-muted" style="font-family:monospace; margin-top:4px;">Manual Trigger</span></td>
+                                <td>
+                                    <div style="font-weight:600; color:#fff;">Node-eu-west-3</div><span
+                                        class="stitch-muted" style="font-family:monospace; margin-top:4px;">Manual
+                                        Trigger</span>
+                                </td>
                                 <td style="font-family:monospace; color:#888;">bf08ea1</td>
                                 <td style="color:#bbb;">122s</td>
                                 <td><span class="stitch-badge stitch-badge-danger">Fail</span></td>
@@ -264,7 +464,8 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                     <div class="stitch-tab">Analytics</div>
                     <div class="stitch-tab">Settings</div>
                 </div>
-                <p class="stitch-body">Las pestañas inactivas son grises tenues, pasando a un blanco rotundo absoluto `border-bottom: 2px solid #fff` para delinear estatus activo inéquivoco.</p>
+                <p class="stitch-body">Las pestañas inactivas son grises tenues, pasando a un blanco rotundo absoluto
+                    `border-bottom: 2px solid #fff` para delinear estatus activo inéquivoco.</p>
             </div>
 
             <!-- ============================================
@@ -274,7 +475,8 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <span class="stitch-section-title" style="color: var(--stitch-color-primary);">🚀 Navegación Pro</span>
 
                 <h2 class="stitch-h1">Breadcrumbs, Dropdowns y Sidebar</h2>
-                <p class="stitch-body">Componentes de orientación estructural para apps con profundidad de navegación. Todo Cero JS.</p>
+                <p class="stitch-body">Componentes de orientación estructural para apps con profundidad de navegación.
+                    Todo Cero JS.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Breadcrumbs (Migas de Pan)</h3>
                 <ul class="stitch-breadcrumb">
@@ -291,10 +493,12 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                         <a href="#" class="stitch-dropdown-item">✏️ Editar perfil</a>
                         <a href="#" class="stitch-dropdown-item">⚙️ Configuración</a>
                         <a href="#" class="stitch-dropdown-item">📊 Estadísticas</a>
-                        <a href="#" class="stitch-dropdown-item" style="color: var(--stitch-color-danger);">🗑️ Eliminar cuenta</a>
+                        <a href="#" class="stitch-dropdown-item" style="color: var(--stitch-color-danger);">🗑️ Eliminar
+                            cuenta</a>
                     </div>
                 </div>
-                <p class="stitch-muted" style="margin-top: 12px;">Pasa el ratón sobre el botón para desplegar el menú. Usa <code>:hover</code> y <code>:focus-within</code>.</p>
+                <p class="stitch-muted" style="margin-top: 12px;">Pasa el ratón sobre el botón para desplegar el menú.
+                    Usa <code>:hover</code> y <code>:focus-within</code>.</p>
             </div>
 
             <!-- ============================================
@@ -304,28 +508,39 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <span class="stitch-section-title" style="color: var(--stitch-color-primary);">📊 Data-Viz</span>
 
                 <h2 class="stitch-h1">Gráficos y Líneas de Tiempo</h2>
-                <p class="stitch-body">Visualización de datos construida 100% con CSS. Ideal para Dashboards sin librerías externas.</p>
+                <p class="stitch-body">Visualización de datos construida 100% con CSS. Ideal para Dashboards sin
+                    librerías externas.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Bar Chart Horizontal</h3>
                 <div class="stitch-bar-chart">
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Chrome</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 65%;"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 65%;"></div>
+                        </div>
                         <span class="stitch-bar-value">65%</span>
                     </div>
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Safari</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 19%; background: var(--stitch-color-success);"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 19%; background: var(--stitch-color-success);">
+                            </div>
+                        </div>
                         <span class="stitch-bar-value">19%</span>
                     </div>
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Firefox</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 4%; background: var(--stitch-color-danger);"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 4%; background: var(--stitch-color-danger);">
+                            </div>
+                        </div>
                         <span class="stitch-bar-value">4%</span>
                     </div>
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Edge</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 12%; background: #7b61ff;"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 12%; background: #7b61ff;"></div>
+                        </div>
                         <span class="stitch-bar-value">12%</span>
                     </div>
                 </div>
@@ -333,22 +548,28 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <h3 class="stitch-h2" style="margin-top: 40px;">Donut Chart (Conic Gradient)</h3>
                 <div class="flex-row" style="gap: 40px;">
                     <div>
-                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-primary) 0% 72%, var(--stitch-color-bg-alt) 72% 100%);">
+                        <div class="stitch-donut"
+                            style="background: conic-gradient(var(--stitch-color-primary) 0% 72%, var(--stitch-color-bg-alt) 72% 100%);">
                             <span class="stitch-donut-value">72%</span>
                         </div>
-                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Espacio Usado</span>
+                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Espacio
+                            Usado</span>
                     </div>
                     <div>
-                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-success) 0% 45%, var(--stitch-color-bg-alt) 45% 100%);">
+                        <div class="stitch-donut"
+                            style="background: conic-gradient(var(--stitch-color-success) 0% 45%, var(--stitch-color-bg-alt) 45% 100%);">
                             <span class="stitch-donut-value">45%</span>
                         </div>
-                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Conversión</span>
+                        <span class="stitch-muted"
+                            style="text-align:center; display:block; margin-top:8px;">Conversión</span>
                     </div>
                     <div>
-                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-danger) 0% 12%, var(--stitch-color-bg-alt) 12% 100%);">
+                        <div class="stitch-donut"
+                            style="background: conic-gradient(var(--stitch-color-danger) 0% 12%, var(--stitch-color-bg-alt) 12% 100%);">
                             <span class="stitch-donut-value">12%</span>
                         </div>
-                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Errores</span>
+                        <span class="stitch-muted"
+                            style="text-align:center; display:block; margin-top:8px;">Errores</span>
                     </div>
                 </div>
 
@@ -356,19 +577,23 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <div class="stitch-timeline">
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">27 Mar 2026 · 20:00</span>
-                        <div class="stitch-timeline-content">Se añadieron <strong>12 Componentes Pro</strong> al sistema Stitch Level 1.</div>
+                        <div class="stitch-timeline-content">Se añadieron <strong>12 Componentes Pro</strong> al sistema
+                            Stitch Level 1.</div>
                     </div>
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">27 Mar 2026 · 19:50</span>
-                        <div class="stitch-timeline-content">Grid Responsivo implementado con clases <code>.stitch-grid-*</code>.</div>
+                        <div class="stitch-timeline-content">Grid Responsivo implementado con clases
+                            <code>.stitch-grid-*</code>.</div>
                     </div>
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">27 Mar 2026 · 18:30</span>
-                        <div class="stitch-timeline-content">Primera inyección de Componentes Avanzados CSS-Only (Tooltips, Skeletons, Carruseles).</div>
+                        <div class="stitch-timeline-content">Primera inyección de Componentes Avanzados CSS-Only
+                            (Tooltips, Skeletons, Carruseles).</div>
                     </div>
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">26 Mar 2026</span>
-                        <div class="stitch-timeline-content">Creación del repositorio Google Stitch Styles con 6 niveles de diseño.</div>
+                        <div class="stitch-timeline-content">Creación del repositorio Google Stitch Styles con 6 niveles
+                            de diseño.</div>
                     </div>
                 </div>
             </div>
@@ -383,7 +608,8 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <p class="stitch-body">Micro-interacciones y estados vacíos para flujos de usuario profesionales.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Toast Notification (Simulación Fija)</h3>
-                <div style="position: relative; height: 80px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-md); overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 12px;">
+                <div
+                    style="position: relative; height: 80px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-md); overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 12px;">
                     <div class="stitch-toast" style="position: relative; bottom: auto; right: auto;">
                         <span class="stitch-toast-icon">✅</span>
                         Registro guardado correctamente.
@@ -394,7 +620,8 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <div class="stitch-empty-state">
                     <span class="stitch-empty-icon">📭</span>
                     <span class="stitch-empty-title">No tienes mensajes</span>
-                    <span class="stitch-empty-body">Cuando recibas tu primer mensaje, aparecerá aquí. ¡Mantente atento!</span>
+                    <span class="stitch-empty-body">Cuando recibas tu primer mensaje, aparecerá aquí. ¡Mantente
+                        atento!</span>
                     <button class="stitch-btn stitch-btn-primary">Escribir mensaje</button>
                 </div>
 
@@ -426,7 +653,8 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
                 <span class="stitch-section-title" style="color: var(--stitch-color-primary);">📝 Formularios Pro</span>
 
                 <h2 class="stitch-h1">Inputs Avanzados y Dropzones</h2>
-                <p class="stitch-body">Controles de formulario de nivel Enterprise: búsquedas con iconos, chips y zonas de arrastre.</p>
+                <p class="stitch-body">Controles de formulario de nivel Enterprise: búsquedas con iconos, chips y zonas
+                    de arrastre.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Input con Icono (Búsqueda)</h3>
                 <div class="stitch-input-icon-wrapper">
@@ -459,4 +687,5 @@ Entrega la maqueta HTML más refinada y limpia posible.</code></pre>
     </main>
 
 </body>
+
 </html>

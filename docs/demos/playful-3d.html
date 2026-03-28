@@ -1,65 +1,238 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Completa: Playful 3D | Google Stitch Styles</title>
     <!-- Quicksand: Una fuente muy redonda y amigable, perfecta para gamificación -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles/level-6-playful3d/theme-playful.css?v=5">
+    <link rel="stylesheet" href="/Google-Stitch-Style-Hub/styles/level-6-playful3d/theme-playful.css?v=5">
     <style>
         /* ESTILOS INTERNOS DE LA DEMO GAMIFICATION */
-        body { 
-            margin: 0; font-family: 'Quicksand', sans-serif; color: #374151; scroll-behavior: smooth; display: flex; 
-            background-color: #f9fafb; 
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: #374151;
+            scroll-behavior: smooth;
+            display: flex;
+            background-color: #f9fafb;
             min-height: 100vh;
         }
-        :root { --stitch-sidebar-width: 280px; }
-        .demo-sidebar { 
-            position: fixed; top: 0; left: 0; width: var(--stitch-sidebar-width); height: 100vh; 
-            background: #ffffff; padding: var(--stitch-space-lg); box-sizing: border-box; overflow-y: auto; z-index: 100;
+
+        :root {
+            --stitch-sidebar-width: 280px;
+        }
+
+        .demo-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--stitch-sidebar-width);
+            height: 100vh;
+            background: #ffffff;
+            padding: var(--stitch-space-lg);
+            box-sizing: border-box;
+            overflow-y: auto;
+            z-index: 100;
             border-right: 4px solid #e5e7eb;
         }
-        .demo-sidebar h3 { margin-top: 0; font-size: 1.1rem; color: #9ca3af; margin-bottom: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;}
-        .demo-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-        .demo-nav a { 
-            text-decoration: none; color: #6b7280; font-weight: 800; font-size: 1.05rem; padding: 12px 16px; 
-            border-radius: 16px; transition: all 0.1s; display: block;
+
+        .demo-sidebar h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-bottom: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .demo-nav a {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 12px 16px;
+            border-radius: 16px;
+            transition: all 0.1s;
+            display: block;
             border: 2px solid transparent;
         }
-        .demo-nav a:hover { 
-            color: #1cb0f6; background: #f0f9ff; 
-            border: 2px solid #e0f2fe; border-bottom: 4px solid #bae6fd;
+
+        .demo-nav a:hover {
+            color: #1cb0f6;
+            background: #f0f9ff;
+            border: 2px solid #e0f2fe;
+            border-bottom: 4px solid #bae6fd;
             transform: translateY(-2px);
         }
-        .demo-nav a:active { transform: translateY(2px); border-bottom-width: 2px; }
 
-        .demo-main { margin-left: var(--stitch-sidebar-width); padding: 50px var(--stitch-space-lg); width: calc(100% - var(--stitch-sidebar-width)); display: flex; justify-content: center; box-sizing: border-box; background-image: radial-gradient(#e5e7eb 2px, transparent 2px); background-size: 40px 40px;}
-        .demo-wrapper { max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 48px; }
-        
-        .demo-header { background: #fff; padding: 40px; border-radius: 32px; border: 2px solid #e5e7eb; border-bottom: 8px solid #e5e7eb; text-align: center; }
-        .demo-header h1 { font-size: 3.5rem; margin: 0 0 16px 0; font-weight: 800; color: #1cb0f6; }
-        .demo-header p { color: #6b7280; font-size: 1.25rem; font-weight: 600; margin: 0; line-height: 1.6;}
+        .demo-nav a:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+
+        .demo-main {
+            margin-left: var(--stitch-sidebar-width);
+            padding: 50px var(--stitch-space-lg);
+            width: calc(100% - var(--stitch-sidebar-width));
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+            background-image: radial-gradient(#e5e7eb 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+
+        .demo-wrapper {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .demo-header {
+            background: #fff;
+            padding: 40px;
+            border-radius: 32px;
+            border: 2px solid #e5e7eb;
+            border-bottom: 8px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .demo-header h1 {
+            font-size: 3.5rem;
+            margin: 0 0 16px 0;
+            font-weight: 800;
+            color: #1cb0f6;
+        }
+
+        .demo-header p {
+            color: #6b7280;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.6;
+        }
 
         /* WIDGET DE CÓDIGO (AMIGABLE) */
-        .stitch-code-block { margin-top: 24px; background: #ffffff; border-radius: 24px; overflow: hidden; border: 2px solid #e5e7eb; border-bottom: 6px solid #e5e7eb;}
-        .stitch-code-block summary { padding: 16px 24px; background: #f3f4f6; color: #4b5563; font-size: 1rem; font-weight: 800; cursor: pointer; border-bottom: 2px solid #e5e7eb; outline: none; display: flex; align-items: center; gap: 12px; list-style: none; transition: background 0.2s;}
-        .stitch-code-block summary::-webkit-details-marker { display: none; }
-        .stitch-code-block summary:before { content: "▼"; font-size: 0.8rem; color: #1cb0f6; transition: transform 0.2s; }
-        .stitch-code-block[open] summary:before { transform: rotate(-180deg); }
-        .stitch-code-content { position: relative; padding: 24px; background: #ffffff;}
-        .stitch-btn-copy { position: absolute; top: 16px; right: 16px; background: #f3f4f6; color: #1cb0f6; padding: 8px 16px; border-radius: 999px; border: 2px solid #e5e7eb; border-bottom: 4px solid #e5e7eb; font-size: 0.9rem; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; font-family: inherit;}
-        .stitch-btn-copy:active { transform: translateY(2px); border-bottom-width: 2px; background: #e0f2fe;}
-        .stitch-code-content pre { margin: 0; overflow-x: auto; color: #374151; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; font-weight: 600; line-height: 1.5; padding-right: 100px;}
+        .stitch-code-block {
+            margin-top: 24px;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+            border-bottom: 6px solid #e5e7eb;
+        }
 
-        .stitch-onboarding-card { background: #fffcf0; border-radius: 32px; padding: 40px; margin-bottom: 40px; border: 2px solid #fef08a; border-bottom: 8px solid #fde047; scroll-margin-top: 40px;}
-        .stitch-onboarding-title { color: #ca8a04; font-size: 2.2rem; font-weight: 800; margin: 0 0 16px 0; }
+        .stitch-code-block summary {
+            padding: 16px 24px;
+            background: #f3f4f6;
+            color: #4b5563;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            border-bottom: 2px solid #e5e7eb;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            list-style: none;
+            transition: background 0.2s;
+        }
+
+        .stitch-code-block summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .stitch-code-block summary:before {
+            content: "▼";
+            font-size: 0.8rem;
+            color: #1cb0f6;
+            transition: transform 0.2s;
+        }
+
+        .stitch-code-block[open] summary:before {
+            transform: rotate(-180deg);
+        }
+
+        .stitch-code-content {
+            position: relative;
+            padding: 24px;
+            background: #ffffff;
+        }
+
+        .stitch-btn-copy {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #f3f4f6;
+            color: #1cb0f6;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 2px solid #e5e7eb;
+            border-bottom: 4px solid #e5e7eb;
+            font-size: 0.9rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.1s;
+            font-family: inherit;
+        }
+
+        .stitch-btn-copy:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+            background: #e0f2fe;
+        }
+
+        .stitch-code-content pre {
+            margin: 0;
+            overflow-x: auto;
+            color: #374151;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.5;
+            padding-right: 100px;
+        }
+
+        .stitch-onboarding-card {
+            background: #fffcf0;
+            border-radius: 32px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 2px solid #fef08a;
+            border-bottom: 8px solid #fde047;
+            scroll-margin-top: 40px;
+        }
+
+        .stitch-onboarding-title {
+            color: #ca8a04;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0 0 16px 0;
+        }
     </style>
 </head>
+
 <body>
 
     <aside class="demo-sidebar">
-        <a href="../index.html" style="display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; color:#1cb0f6; font-size:1.1rem; margin-bottom:32px; font-weight:800; background:#f0f9ff; padding: 14px; border-radius:16px; border: 2px solid #bae6fd; border-bottom: 4px solid #7dd3fc; transition:all 0.1s; text-transform:uppercase;" onmousedown="this.style.transform='translateY(2px)'; this.style.borderBottomWidth='2px';" onmouseup="this.style.transform='translateY(0)'; this.style.borderBottomWidth='4px';">
+        <a href="../index.html"
+            style="display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; color:#1cb0f6; font-size:1.1rem; margin-bottom:32px; font-weight:800; background:#f0f9ff; padding: 14px; border-radius:16px; border: 2px solid #bae6fd; border-bottom: 4px solid #7dd3fc; transition:all 0.1s; text-transform:uppercase;"
+            onmousedown="this.style.transform='translateY(2px)'; this.style.borderBottomWidth='2px';"
+            onmouseup="this.style.transform='translateY(0)'; this.style.borderBottomWidth='4px';">
             ← Volver
         </a>
         <h3>Módulos de Juego</h3>
@@ -71,7 +244,7 @@
             <li><a href="#cards">📦 Bloques Físicos</a></li>
             <li><a href="#tables">🏆 Leaderboards</a></li>
             <li><a href="#nav">🗺️ Mapa Flotante</a></li>
-                    <li><a href="#nav-pro">🚀 Navegación Pro</a></li>
+            <li><a href="#nav-pro">🚀 Navegación Pro</a></li>
             <li><a href="#data-viz">📊 Data-Viz</a></li>
             <li><a href="#feedback-pro">🔔 Feedback Pro</a></li>
             <li><a href="#forms-pro">📝 Formularios Pro</a></li>
@@ -80,24 +253,30 @@
 
     <main class="demo-main">
         <div class="demo-wrapper">
-            
+
             <header class="demo-header">
                 <h1>Gamification UI 🎮</h1>
-                <p>Bienvenido al estilo Playful 3D. Aquí, cada elemento es un juguete táctil. Olvídate de la seriedad plana y de las sombras tenues de CSS: los botones usan gruesos `border-bottom` y bajan físicamente cuando los aprietas. Altamente adictivo.</p>
+                <p>Bienvenido al estilo Playful 3D. Aquí, cada elemento es un juguete táctil. Olvídate de la seriedad
+                    plana y de las sombras tenues de CSS: los botones usan gruesos `border-bottom` y bajan físicamente
+                    cuando los aprietas. Altamente adictivo.</p>
             </header>
 
             <!-- SECCIÓN NUEVA: ONBOARDING Y PROMPTS -->
             <div id="setup" class="stitch-onboarding-card">
                 <h2 class="stitch-onboarding-title">⭐ Tu Primer Nivel (Setup)</h2>
-                <p class="stitch-body" style="font-weight: 600; font-size: 1.15rem; color: #854d0e;">A los humanos les encanta apretar cosas que parecen botones físicos (affordance). Al cambiar tu CSS base por el nuestro, todos tus botones estándar de HTML adquirirán automáticamente las físicas "Gomosas" 3D.</p>
-                
+                <p class="stitch-body" style="font-weight: 600; font-size: 1.15rem; color: #854d0e;">A los humanos les
+                    encanta apretar cosas que parecen botones físicos (affordance). Al cambiar tu CSS base por el
+                    nuestro, todos tus botones estándar de HTML adquirirán automáticamente las físicas "Gomosas" 3D.</p>
+
                 <h3 class="stitch-h3" style="color: #ca8a04; margin-top: 32px;">Paso 1: Equipa tu Armadura CSS</h3>
-                <p class="stitch-muted" style="color: #a16207;">Carga el archivo maestro para inyectar físicas de choque en todos los hovers.</p>
+                <p class="stitch-muted" style="color: #a16207;">Carga el archivo maestro para inyectar físicas de choque
+                    en todos los hovers.</p>
                 <details class="stitch-code-block">
                     <summary>📦 Desbloquear Código: 'theme-playful.css'</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Conseguido!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
-<pre><code>/* =========================================================================
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Conseguido!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <pre><code>/* =========================================================================
    🎮 GOOGLE STITCH STYLES : PLAYFUL 3D (GAMIFICATION)
    ========================================================================= */
 
@@ -115,12 +294,15 @@
                 </details>
 
                 <h3 class="stitch-h3" style="color: #ca8a04; margin-top: 32px;">Paso 2: Usa la Magia Artificial</h3>
-                <p class="stitch-muted" style="color: #a16207;">Copia este prompt en tu IA para que diseñe misiones o mini-juegos dentro de esta UI táctil.</p>
+                <p class="stitch-muted" style="color: #a16207;">Copia este prompt en tu IA para que diseñe misiones o
+                    mini-juegos dentro de esta UI táctil.</p>
                 <details class="stitch-code-block" open>
                     <summary>✨ Hechizo Mayor: Prompt IA</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Conseguido!'; setTimeout(()=>this.innerText='Copiar Prompt', 2000);">Copiar Prompt</button>
-<pre><code>Eres un Desarrollador Front-end lúdico, experto en el Framework de Gamificación (Playful 3D / Duolingo Style).
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Conseguido!'; setTimeout(()=>this.innerText='Copiar Prompt', 2000);">Copiar
+                            Prompt</button>
+                        <pre><code>Eres un Desarrollador Front-end lúdico, experto en el Framework de Gamificación (Playful 3D / Duolingo Style).
 =========================================
 MISIÓN: Diseñar una pantalla de logro para [RELLENA AQUÍ].
 =========================================
@@ -140,13 +322,16 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
             <div id="typography" class="stitch-container">
                 <h2 class="stitch-section-title">Textos Felices</h2>
                 <h1 class="stitch-h1">Tipografía Redonda</h1>
-                <p class="stitch-body">Las tipografías sin serifa modernas (Quicksand o Nunito) en bold o extra-bold combinan divinamente con todo el plástico grueso y moldeado que rodea las fuentes de gamificación.</p>
+                <p class="stitch-body">Las tipografías sin serifa modernas (Quicksand o Nunito) en bold o extra-bold
+                    combinan divinamente con todo el plástico grueso y moldeado que rodea las fuentes de gamificación.
+                </p>
                 <span class="stitch-muted">Aviso: Mantener pulsado para ganar 10 EXP.</span>
-                
+
                 <details class="stitch-code-block">
                     <summary>Ver Estructura HTML</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
                         <pre><code>&lt;div class="stitch-container"&gt;
   &lt;h1 class="stitch-h1"&gt;Yay! Completado&lt;/h1&gt;
   &lt;p class="stitch-body"&gt;Has avanzado al siguiente mundo.&lt;/p&gt;
@@ -166,7 +351,8 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <details class="stitch-code-block">
                     <summary>Ver Mecánicas HTML</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
                         <pre><code>&lt;!-- Prueba hacer clic real en los botones base. Verás cómo bajan físicamente. --&gt;
 &lt;div class="stitch-btn-group"&gt;
   &lt;button class="stitch-btn stitch-btn-primary"&gt;¡Vamos!&lt;/button&gt;
@@ -182,7 +368,7 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                     <label class="stitch-label" for="txtNick">¿Cuál es tu Nickname?</label>
                     <input type="text" id="txtNick" class="stitch-input" placeholder="JugadorMaster99">
                 </div>
-                
+
                 <div class="stitch-control-row" style="margin-top: 24px;">
                     <input type="checkbox" id="chkAudio" checked>
                     <label for="chkAudio">Activar Música 8-Bit</label>
@@ -191,7 +377,8 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <details class="stitch-code-block">
                     <summary>Ver Código HTML</summary>
                     <div class="stitch-code-content">
-                        <button class="stitch-btn-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
+                        <button class="stitch-btn-copy"
+                            onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='¡Copiado!'; setTimeout(()=>this.innerText='Copiar', 2000);">Copiar</button>
                         <pre><code>&lt;div class="stitch-form-group"&gt;
   &lt;label class="stitch-label" for="txtNick"&gt;Tu apodo&lt;/label&gt;
   &lt;input type="text" id="txtNick" class="stitch-input"&gt;
@@ -217,13 +404,15 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                     <div class="stitch-card" style="width: 320px;">
                         <div class="stitch-card-header" style="color: #1cb0f6;">📚 Unidad 4: Estructuras</div>
                         <div class="stitch-card-body">
-                            <p class="stitch-body" style="margin:0;">Aprende las bases sobre variables, bucles for y condicionales if/else jugando.</p>
+                            <p class="stitch-body" style="margin:0;">Aprende las bases sobre variables, bucles for y
+                                condicionales if/else jugando.</p>
                         </div>
-                        <div class="stitch-card-footer" style="padding: 24px; display:flex; gap:16px; border-top: none;">
+                        <div class="stitch-card-footer"
+                            style="padding: 24px; display:flex; gap:16px; border-top: none;">
                             <button class="stitch-btn stitch-btn-secondary" style="width: 100%;">¡Estudiar!</button>
                         </div>
                     </div>
-                    
+
                     <!-- Métrica de Experiencia -->
                     <div class="stitch-metric-card" style="width: 220px;">
                         <span class="stitch-metric-label" style="color: #d97706;">Racha Fuego</span>
@@ -237,9 +426,12 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <h3 class="stitch-h2" style="margin: 40px 0 16px 0;">Modales Interactivos</h3>
                 <div class="stitch-modal-overlay">
                     <div class="stitch-modal">
-                        <div class="stitch-card-header" style="text-align: center; border-bottom: none; font-size: 1.5rem; padding-bottom:0;">💎 ¡NUEVO LOGRO!</div>
+                        <div class="stitch-card-header"
+                            style="text-align: center; border-bottom: none; font-size: 1.5rem; padding-bottom:0;">💎
+                            ¡NUEVO LOGRO!</div>
                         <div class="stitch-card-body" style="text-align: center;">
-                            <p class="stitch-body" style="margin:0;">Acabas de desbloquear el escudo de plata. ¡Felicidades!</p>
+                            <p class="stitch-body" style="margin:0;">Acabas de desbloquear el escudo de plata.
+                                ¡Felicidades!</p>
                         </div>
                         <div class="stitch-card-footer" style="padding: 24px; border-top:none;">
                             <button class="stitch-btn stitch-btn-primary" style="width:100%;">¡Equipar Ahora!</button>
@@ -262,13 +454,19 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                         </thead>
                         <tbody>
                             <tr>
-                                <td><div style="font-weight:800; font-size:1.1rem; color:var(--stitch-color-text);">Sofi_Dev</div><span class="stitch-muted">@soficodes</span></td>
+                                <td>
+                                    <div style="font-weight:800; font-size:1.1rem; color:var(--stitch-color-text);">
+                                        Sofi_Dev</div><span class="stitch-muted">@soficodes</span>
+                                </td>
                                 <td><span class="stitch-badge stitch-badge-success">Diamante</span></td>
                                 <td style="font-weight: 800; color: #58cc02;">14,500 XP</td>
                                 <td>#1</td>
                             </tr>
                             <tr>
-                                <td><div style="font-weight:800; font-size:1.1rem; color:var(--stitch-color-text);">MateoX</div><span class="stitch-muted">@matmat</span></td>
+                                <td>
+                                    <div style="font-weight:800; font-size:1.1rem; color:var(--stitch-color-text);">
+                                        MateoX</div><span class="stitch-muted">@matmat</span>
+                                </td>
                                 <td><span class="stitch-badge stitch-badge-primary">Zafiro</span></td>
                                 <td style="font-weight: 800; color: #1cb0f6;">11,200 XP</td>
                                 <td>#2</td>
@@ -285,7 +483,10 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                     <div class="stitch-tab">Repasar Misiones</div>
                     <div class="stitch-tab">Tienda Items</div>
                 </div>
-                <p class="stitch-body" style="background:#f3f4f6; padding:24px; border-radius:16px; border: 2px solid #e5e7eb; border-bottom: 4px solid #e5e7eb;">Las pestañas se comportan como tarjetas que sobresalen, conectadas a las bases amigables del diseño Playful.</p>
+                <p class="stitch-body"
+                    style="background:#f3f4f6; padding:24px; border-radius:16px; border: 2px solid #e5e7eb; border-bottom: 4px solid #e5e7eb;">
+                    Las pestañas se comportan como tarjetas que sobresalen, conectadas a las bases amigables del diseño
+                    Playful.</p>
             </div>
 
             <!-- ============================================
@@ -295,7 +496,8 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <span class="stitch-section-title" style="color: var(--stitch-color-primary);">🚀 Navegación Pro</span>
 
                 <h2 class="stitch-h1">Breadcrumbs, Dropdowns y Sidebar</h2>
-                <p class="stitch-body">Componentes de orientación estructural para apps con profundidad de navegación. Todo Cero JS.</p>
+                <p class="stitch-body">Componentes de orientación estructural para apps con profundidad de navegación.
+                    Todo Cero JS.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Breadcrumbs (Migas de Pan)</h3>
                 <ul class="stitch-breadcrumb">
@@ -312,10 +514,12 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                         <a href="#" class="stitch-dropdown-item">✏️ Editar perfil</a>
                         <a href="#" class="stitch-dropdown-item">⚙️ Configuración</a>
                         <a href="#" class="stitch-dropdown-item">📊 Estadísticas</a>
-                        <a href="#" class="stitch-dropdown-item" style="color: var(--stitch-color-danger);">🗑️ Eliminar cuenta</a>
+                        <a href="#" class="stitch-dropdown-item" style="color: var(--stitch-color-danger);">🗑️ Eliminar
+                            cuenta</a>
                     </div>
                 </div>
-                <p class="stitch-muted" style="margin-top: 12px;">Pasa el ratón sobre el botón para desplegar el menú. Usa <code>:hover</code> y <code>:focus-within</code>.</p>
+                <p class="stitch-muted" style="margin-top: 12px;">Pasa el ratón sobre el botón para desplegar el menú.
+                    Usa <code>:hover</code> y <code>:focus-within</code>.</p>
             </div>
 
             <!-- ============================================
@@ -325,28 +529,39 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <span class="stitch-section-title" style="color: var(--stitch-color-primary);">📊 Data-Viz</span>
 
                 <h2 class="stitch-h1">Gráficos y Líneas de Tiempo</h2>
-                <p class="stitch-body">Visualización de datos construida 100% con CSS. Ideal para Dashboards sin librerías externas.</p>
+                <p class="stitch-body">Visualización de datos construida 100% con CSS. Ideal para Dashboards sin
+                    librerías externas.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Bar Chart Horizontal</h3>
                 <div class="stitch-bar-chart">
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Chrome</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 65%;"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 65%;"></div>
+                        </div>
                         <span class="stitch-bar-value">65%</span>
                     </div>
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Safari</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 19%; background: var(--stitch-color-success);"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 19%; background: var(--stitch-color-success);">
+                            </div>
+                        </div>
                         <span class="stitch-bar-value">19%</span>
                     </div>
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Firefox</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 4%; background: var(--stitch-color-danger);"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 4%; background: var(--stitch-color-danger);">
+                            </div>
+                        </div>
                         <span class="stitch-bar-value">4%</span>
                     </div>
                     <div class="stitch-bar-row">
                         <span class="stitch-bar-label">Edge</span>
-                        <div class="stitch-bar-track"><div class="stitch-bar-fill" style="width: 12%; background: #7b61ff;"></div></div>
+                        <div class="stitch-bar-track">
+                            <div class="stitch-bar-fill" style="width: 12%; background: #7b61ff;"></div>
+                        </div>
                         <span class="stitch-bar-value">12%</span>
                     </div>
                 </div>
@@ -354,22 +569,28 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <h3 class="stitch-h2" style="margin-top: 40px;">Donut Chart (Conic Gradient)</h3>
                 <div class="flex-row" style="gap: 40px;">
                     <div>
-                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-primary) 0% 72%, var(--stitch-color-bg-alt) 72% 100%);">
+                        <div class="stitch-donut"
+                            style="background: conic-gradient(var(--stitch-color-primary) 0% 72%, var(--stitch-color-bg-alt) 72% 100%);">
                             <span class="stitch-donut-value">72%</span>
                         </div>
-                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Espacio Usado</span>
+                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Espacio
+                            Usado</span>
                     </div>
                     <div>
-                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-success) 0% 45%, var(--stitch-color-bg-alt) 45% 100%);">
+                        <div class="stitch-donut"
+                            style="background: conic-gradient(var(--stitch-color-success) 0% 45%, var(--stitch-color-bg-alt) 45% 100%);">
                             <span class="stitch-donut-value">45%</span>
                         </div>
-                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Conversión</span>
+                        <span class="stitch-muted"
+                            style="text-align:center; display:block; margin-top:8px;">Conversión</span>
                     </div>
                     <div>
-                        <div class="stitch-donut" style="background: conic-gradient(var(--stitch-color-danger) 0% 12%, var(--stitch-color-bg-alt) 12% 100%);">
+                        <div class="stitch-donut"
+                            style="background: conic-gradient(var(--stitch-color-danger) 0% 12%, var(--stitch-color-bg-alt) 12% 100%);">
                             <span class="stitch-donut-value">12%</span>
                         </div>
-                        <span class="stitch-muted" style="text-align:center; display:block; margin-top:8px;">Errores</span>
+                        <span class="stitch-muted"
+                            style="text-align:center; display:block; margin-top:8px;">Errores</span>
                     </div>
                 </div>
 
@@ -377,19 +598,23 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <div class="stitch-timeline">
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">27 Mar 2026 · 20:00</span>
-                        <div class="stitch-timeline-content">Se añadieron <strong>12 Componentes Pro</strong> al sistema Stitch Level 1.</div>
+                        <div class="stitch-timeline-content">Se añadieron <strong>12 Componentes Pro</strong> al sistema
+                            Stitch Level 1.</div>
                     </div>
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">27 Mar 2026 · 19:50</span>
-                        <div class="stitch-timeline-content">Grid Responsivo implementado con clases <code>.stitch-grid-*</code>.</div>
+                        <div class="stitch-timeline-content">Grid Responsivo implementado con clases
+                            <code>.stitch-grid-*</code>.</div>
                     </div>
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">27 Mar 2026 · 18:30</span>
-                        <div class="stitch-timeline-content">Primera inyección de Componentes Avanzados CSS-Only (Tooltips, Skeletons, Carruseles).</div>
+                        <div class="stitch-timeline-content">Primera inyección de Componentes Avanzados CSS-Only
+                            (Tooltips, Skeletons, Carruseles).</div>
                     </div>
                     <div class="stitch-timeline-item">
                         <span class="stitch-timeline-date">26 Mar 2026</span>
-                        <div class="stitch-timeline-content">Creación del repositorio Google Stitch Styles con 6 niveles de diseño.</div>
+                        <div class="stitch-timeline-content">Creación del repositorio Google Stitch Styles con 6 niveles
+                            de diseño.</div>
                     </div>
                 </div>
             </div>
@@ -404,7 +629,8 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <p class="stitch-body">Micro-interacciones y estados vacíos para flujos de usuario profesionales.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Toast Notification (Simulación Fija)</h3>
-                <div style="position: relative; height: 80px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-md); overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 12px;">
+                <div
+                    style="position: relative; height: 80px; background: var(--stitch-color-bg-alt); border-radius: var(--stitch-radius-md); overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 12px;">
                     <div class="stitch-toast" style="position: relative; bottom: auto; right: auto;">
                         <span class="stitch-toast-icon">✅</span>
                         Registro guardado correctamente.
@@ -415,7 +641,8 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <div class="stitch-empty-state">
                     <span class="stitch-empty-icon">📭</span>
                     <span class="stitch-empty-title">No tienes mensajes</span>
-                    <span class="stitch-empty-body">Cuando recibas tu primer mensaje, aparecerá aquí. ¡Mantente atento!</span>
+                    <span class="stitch-empty-body">Cuando recibas tu primer mensaje, aparecerá aquí. ¡Mantente
+                        atento!</span>
                     <button class="stitch-btn stitch-btn-primary">Escribir mensaje</button>
                 </div>
 
@@ -447,7 +674,8 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
                 <span class="stitch-section-title" style="color: var(--stitch-color-primary);">📝 Formularios Pro</span>
 
                 <h2 class="stitch-h1">Inputs Avanzados y Dropzones</h2>
-                <p class="stitch-body">Controles de formulario de nivel Enterprise: búsquedas con iconos, chips y zonas de arrastre.</p>
+                <p class="stitch-body">Controles de formulario de nivel Enterprise: búsquedas con iconos, chips y zonas
+                    de arrastre.</p>
 
                 <h3 class="stitch-h2" style="margin-top: 24px;">Input con Icono (Búsqueda)</h3>
                 <div class="stitch-input-icon-wrapper">
@@ -480,4 +708,5 @@ Genera el HTML más amigable y estructurado posible para que los usuarios sienta
     </main>
 
 </body>
+
 </html>

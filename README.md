@@ -104,3 +104,6 @@ Consulta [CONTRIBUTING.md](./CONTRIBUTING.md) y [STYLE_GUIDE.md](./STYLE_GUIDE.m
 ---
 
 **Stitch Design Engine** — *Framework CSS donde la IA trabaja para ti, no al revés.*
+
+## LICENSE
+Este proyecto está bajo la licencia CC BY 4.0. Si utilizas estos estilos, por favor cita este repositorio, Muchas gracias de antemano.
